@@ -11,6 +11,37 @@
         .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; font-feature-settings: 'liga'; }
         .ghost-border { border: 1px solid rgba(100, 116, 139, 0.1); }
     </style>
+
+    <style id="dark-theme-style">
+        html.dark { background-color: #0F172A !important; color: #F8FAFC !important; }
+        html.dark body { background-color: #0F172A !important; color: #F8FAFC !important; }
+        html.dark header { background-color: #0F172A !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+        html.dark header a, html.dark header button, html.dark header span { color: #F8FAFC !important; }
+        html.dark .bg-surface-container-lowest,
+        html.dark .bg-surface-container-low,
+        html.dark .bg-white,
+        html.dark .bg-surface-ice {
+            background-color: #1E293B !important;
+            color: #F8FAFC !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6,
+        html.dark p, html.dark label, html.dark span:not(.text-emerald-accent), html.dark div {
+            color: #F8FAFC !important;
+        }
+        html.dark .text-secondary, html.dark .text-slate-400, html.dark .text-slate-500 {
+            color: #94A3B8 !important;
+        }
+        html.dark input, html.dark select, html.dark textarea {
+            background-color: #0F172A !important;
+            color: #F8FAFC !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        html.dark .text-emerald-accent {
+            color: #10B981 !important;
+        }
+    </style>
+
 </head>
 <body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
     <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 bg-[radial-gradient(circle_400px_at_var(--x,_0px)_var(--y,_0px),rgba(16,185,129,0.15),transparent_80%)]"></div>
@@ -41,7 +72,7 @@
                                 <div class="border-t border-slate-gray/10 my-1"></div>
                                 <a href="datarights.html" class="block px-4 py-2 text-sm text-emerald-accent font-semibold hover:bg-surface-ice transition-colors">DSR Rights Portal (§11-14)</a>
                                 <a href="grievance.html" class="block px-4 py-2 text-sm text-emerald-accent font-semibold hover:bg-surface-ice transition-colors">Grievance Portal (§13)</a>
-                                <a href="preference-center.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Preference Center</a>
+                                <a href="https://www.autocops.org/preference-center" target="_blank" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Preference Center</a>
                             </div>
                         </div>
                     </div>
@@ -49,8 +80,11 @@
                     <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="wealth.html">Wealth</a>
                 </nav>
             </div>
-            <!-- Actions -->
+            <!-- Actions & Theme Toggle -->
             <div class="flex items-center gap-4">
+                <button id="theme-toggle-btn" onclick="toggleDarkTheme()" class="p-2.5 rounded-full border border-slate-gray/20 text-primary hover:bg-surface-ice transition-colors flex items-center justify-center cursor-pointer" title="Toggle Dark/Light Theme">
+                    <span id="theme-toggle-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
                 <a class="flex items-center gap-2 bg-emerald-accent text-on-primary px-6 py-2.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity" href="login.html">
                     <span class="material-symbols-outlined text-[18px]">
                         lock
@@ -162,21 +196,24 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-surface-container-low w-full border-t border-slate-gray/10 mt-auto">
+    <footer class="bg-navy-deep text-white w-full border-t border-slate-700/60 mt-auto">
         <div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full gap-6">
-            <div class="text-title-md font-display-lg text-primary tracking-tight">Secure Bank</div>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="index.html">Home</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-account.html">Open Account</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-fd.html">Fixed Deposit</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="apply-loan.html">Apply for Loan</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="credit-card.html">Credit Cards</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="datarights.html">DSR Rights</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="grievance.html">Grievance</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="preference-center.html">Preferences</a>
-                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="privacy.html">Privacy Policy</a>
+            <div class="text-title-md font-display-lg text-white tracking-tight flex items-center gap-2">
+                <span class="material-symbols-outlined text-emerald-accent" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                Secure Bank
             </div>
-            <div class="font-body-sm text-body-sm text-secondary text-center md:text-right">
+            <div class="flex flex-wrap justify-center gap-6 text-sm">
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="index.html">Home</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="open-account.html">Open Account</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="open-fd.html">Fixed Deposit</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="apply-loan.html">Apply for Loan</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="credit-card.html">Credit Cards</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="datarights.html">DSR Rights</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="grievance.html">Grievance</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="https://www.autocops.org/preference-center" target="_blank">Preferences</a>
+                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="text-xs text-slate-400 text-center md:text-right">
                 © 2024 Secure Bank. Member FDIC. Equal Housing Lender.
             </div>
         </div>
