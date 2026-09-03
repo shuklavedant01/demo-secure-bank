@@ -84,6 +84,11 @@ async def proxy_pref_link(request: Request):
 async def proxy_consent_verify(request: Request):
     return await proxy_request("GET", "/v1/consent/external/verify", request)
 
+
+@app.get("/api/v1/public/i18n/{domain}/{lang}")
+async def proxy_i18n(domain: str, lang: str, request: Request):
+    return await proxy_request("GET", f"/v1/public/i18n/{domain}/{lang}", request)
+
 @app.get("/")
 async def read_root():
     return FileResponse("index.html")
