@@ -137,24 +137,54 @@
 
     <!-- FOOTER -->
     <footer class="bg-navy-deep text-white w-full border-t border-slate-700/60 mt-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full gap-6">
-            <div class="text-title-md font-display-lg text-white tracking-tight flex items-center gap-2">
-                <span class="material-symbols-outlined text-emerald-accent" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-                Secure Bank
-            </div>
-            <div class="flex flex-wrap justify-center gap-6 text-sm">
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="index.html">Home</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="open-account.html">Open Account</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="open-fd.html">Fixed Deposit</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="apply-loan.html">Apply for Loan</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="credit-card.html">Credit Cards</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="datarights.html">DSR Rights</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="grievance.html">Grievance</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="https://www.autocops.org/preference-center" target="_blank">Preferences</a>
-                <a class="text-slate-300 hover:text-emerald-accent transition-colors" href="privacy.html">Privacy Policy</a>
-            </div>
-            <div class="text-xs text-slate-400 text-center md:text-right">
-                © 2024 Secure Bank. Member FDIC. Equal Housing Lender.
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <!-- Col 1: Brand & Tagline -->
+                <div class="space-y-4">
+                    <div class="text-xl font-display-lg text-white tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined text-emerald-accent" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                        Secure Bank
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Fortified digital banking built on DPDP Act 2023 compliance standards, 256-bit encryption, and zero hidden fees.
+                    </p>
+                    <p class="text-xs text-slate-500 pt-2">© 2024 Secure Bank. Member FDIC. Equal Housing Lender.</p>
+                </div>
+
+                <!-- Col 2: Personal Banking (Vertical Group) -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-700/60 pb-2">Personal Banking</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a class="hover:text-emerald-accent transition-colors" href="index.html">Home Overview</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="open-account.html">Open Account</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="open-fd.html">Fixed Deposit</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="apply-loan.html">Apply for Loan</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="credit-card.html">Credit Cards</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: DPDP & Data Rights (Vertical Group: DSR, Grievance, Preference Center, Privacy in same vertical line) -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-700/60 pb-2">DPDP & Data Rights</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a class="hover:text-emerald-accent transition-colors font-medium text-emerald-accent" href="datarights.html">DSR Rights Portal (§11-14)</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors font-medium text-emerald-accent" href="grievance.html">Grievance Redressal (§13)</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="https://www.autocops.org/preference-center" target="_blank">Preference Center</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="privacy.html">Privacy Policy & §5 Notice</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Services & Help -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-700/60 pb-2">Services & Contact</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a class="hover:text-emerald-accent transition-colors" href="business.html">Business Banking</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="wealth.html">Wealth Management</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="security.html">Information Security</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="contact.html">Contact Support</a></li>
+                        <li><a class="hover:text-emerald-accent transition-colors" href="login.html">Internet Banking Login</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
