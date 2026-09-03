@@ -39,7 +39,7 @@
         .ac-banner-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
         .ac-banner-title { font-size: 16px; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; gap: 8px; }
         .ac-banner-desc { font-size: 13px; color: #94A3B8; line-height: 1.5; margin-bottom: 16px; }
-        .ac-custom-panel { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; width: 100%; }
+        .ac-custom-panel { display: none; flex-wrap: wrap; gap: 10px; margin: 16px 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
         .ac-card-label { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; font-size: 13px; font-weight: 500; color: #E2E8F0; }
         .ac-card-label:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
         .ac-card-label:has(input:checked) { border-color: #10B981; background-color: rgba(16,185,129,0.1); color: #10B981; }
@@ -50,6 +50,8 @@
         .ac-btn-accept:hover { opacity: 0.9; }
         .ac-btn-reject { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #E2E8F0; }
         .ac-btn-reject:hover { background: rgba(255,255,255,0.1); }
+        .ac-btn-customize { background: rgba(255,255,255,0.1); color: #E2E8F0; }
+        .ac-btn-customize:hover { background: rgba(255,255,255,0.2); }
     `;
     document.head.appendChild(style);
 
@@ -66,23 +68,27 @@
         <div class="ac-banner-desc">
             Secure Bank uses essential cookies and data categories under DPDP Act 2023 to provide secure banking, analytics, and personalized features.
         </div>
-        <div class="ac-custom-panel">
+
+        <!-- Custom Preferences Panel (Initially Hidden, Only Essentials Pre-Selected) -->
+        <div class="ac-custom-panel" id="ac-custom-panel">
             <label class="ac-card-label">
                 <input type="checkbox" checked disabled id="ac-cat-essential"> Essential (Required)
             </label>
             <label class="ac-card-label">
-                <input type="checkbox" checked id="ac-cat-analytics"> Analytics
+                <input type="checkbox" id="ac-cat-analytics"> Analytics
             </label>
             <label class="ac-card-label">
-                <input type="checkbox" checked id="ac-cat-functional"> Functional
+                <input type="checkbox" id="ac-cat-functional"> Functional
             </label>
             <label class="ac-card-label">
-                <input type="checkbox" checked id="ac-cat-marketing"> Marketing
+                <input type="checkbox" id="ac-cat-marketing"> Marketing
             </label>
         </div>
+
         <div class="ac-actions">
             <button class="ac-btn ac-btn-reject" id="ac-btn-reject">Reject Optional</button>
-            <button class="ac-btn ac-btn-accept" id="ac-btn-save">Save Selected</button>
+            <button class="ac-btn ac-btn-customize" id="ac-btn-customize">Customize Preferences</button>
+            <button class="ac-btn ac-btn-save" style="display:none; background:#10B981; color:#FFFFFF;" id="ac-btn-save">Save Selected</button>
             <button class="ac-btn ac-btn-accept" style="background:#FFFFFF; color:#0F172A;" id="ac-btn-accept-all">Accept All</button>
         </div>
     `;
@@ -104,8 +110,7 @@
             fetch("/api/consent/cookies", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-API-Key": "dpdp_c703c88acf0d3bb21f8643212d49fc9b959cd2b67ff2bfde"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(payload)
             }).catch(function(err){ console.log("AutoCops consent logged."); });
@@ -122,6 +127,12 @@
 
     document.getElementById('ac-btn-reject').addEventListener('click', function() {
         sendConsentPayload(["STRICTLY_NECESSARY"], ["ANALYTICS", "FUNCTIONAL", "MARKETING"], "BANNER_REJECT_OPTIONAL");
+    });
+
+    document.getElementById('ac-btn-customize').addEventListener('click', function() {
+        document.getElementById('ac-custom-panel').style.display = 'flex';
+        document.getElementById('ac-btn-customize').style.display = 'none';
+        document.getElementById('ac-btn-save').style.display = 'inline-block';
     });
 
     document.getElementById('ac-btn-save').addEventListener('click', function() {

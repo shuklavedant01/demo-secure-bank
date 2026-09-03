@@ -325,7 +325,7 @@
         })
         .then(res => res.json())
         .then(data => {
-            var tid = data.ticket_id || ("GRV-20260901-" + Math.floor(1000 + Math.random() * 9000));
+            var tid = data.ticket_id || data.request_id || data.grievance_id || data.id || data.challenge_id || ("GRV-20260901-" + Math.floor(1000 + Math.random() * 9000));
             document.getElementById('res-grv-id').innerText = tid;
             document.getElementById('grv-stage-2').classList.add('hidden');
             document.getElementById('grv-stage-3').classList.remove('hidden');
