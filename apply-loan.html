@@ -402,18 +402,8 @@
 
 
 <script>
-function handleLoanSubmit(event) {
-    event.preventDefault();
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const fullName = `${firstName} ${lastName}`;
-    const email = document.getElementById('email').value;
-    const amount = document.getElementById('loanAmount').value;
-    const term = document.getElementById('loanTerm').value;
-    const selectedLoanType = document.querySelector('input[name="loanType"]:checked') ? document.querySelector('input[name="loanType"]:checked').value : 'personal';
-    const loanTitle = selectedLoanType.charAt(0).toUpperCase() + selectedLoanType.slice(1);
-    const vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
-
+function sendAutoCopsConsent(purposeId, category, purposeTitle, email, fullName) {
+    var vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
     try {
         fetch("/api/consent/capture", {
             method: "POST",
@@ -428,14 +418,30 @@ function handleLoanSubmit(event) {
                 language: "en",
                 legal_basis: "CONSENT",
                 notice_version: "demo-secure-bank-v1",
-                purpose: "Personal / Home Loan Application",
-                purpose_category: "STRICTLY_NECESSARY",
-                purpose_id: "P_ESSENTIALS",
+                purpose: purposeTitle,
+                purpose_category: category,
+                purpose_id: purposeId,
                 visitor_id: vid,
                 data_principal_id: vid
             })
-        }).then(r => r.json()).then(d => console.log("AutoCops Form Consent recorded:", d)).catch(e => console.error("AutoCops capture error:", e));
+        }).then(r => r.json()).then(d => console.log("AutoCops Consent Captured [" + purposeId + "]:", d)).catch(e => console.error(e));
     } catch(e) {}
+}
+
+function handleLoanSubmit(event) {
+    event.preventDefault();
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const fullName = `${firstName} ${lastName}`;
+    const email = document.getElementById('email').value;
+    const amount = document.getElementById('loanAmount').value;
+    const term = document.getElementById('loanTerm').value;
+    const selectedLoanType = document.querySelector('input[name="loanType"]:checked') ? document.querySelector('input[name="loanType"]:checked').value : 'personal';
+    const loanTitle = selectedLoanType.charAt(0).toUpperCase() + selectedLoanType.slice(1);
+
+    sendAutoCopsConsent("P_ESSENTIALS", "STRICTLY_NECESSARY", "Personal / Home Loan Application", email, fullName);
+    sendAutoCopsConsent("PUR-20260714084638078113", "ANALYTICS", "Analytical Processing", email, fullName);
+    sendAutoCopsConsent("PUR-20260714083036506173", "MARKETING", "Marketing Offers", email, fullName);
 
     const refNum = 'SB-LN-' + Math.floor(100000 + Math.random() * 900000);
     showSuccessModal(
