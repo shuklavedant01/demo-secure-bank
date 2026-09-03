@@ -255,23 +255,25 @@
 
 <script>
 function handleOpenAccountSubmit(event) {
+    event.preventDefault();
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const mobile = document.getElementById('mobile').value;
+    const accType = document.getElementById('accountType').value;
+    const vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
 
-    var vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
     try {
         fetch("/api/consent/capture", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-API-Key": "dpdp_c703c88acf0d3bb21f8643212d49fc9b959cd2b67ff2bfde"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 consent_method: "EXPLICIT",
-                email: document.getElementById('email').value,
-                data_principal_email: document.getElementById('email').value,
+                email: email,
+                data_principal_email: email,
                 data_principal_name: fullName,
                 name: fullName,
-                data_principal_phone: document.getElementById('mobile').value,
-                phone: document.getElementById('mobile').value,
+                data_principal_phone: mobile,
+                phone: mobile,
                 geo_jurisdiction: "IN",
                 language: "en",
                 legal_basis: "CONSENT",
@@ -282,12 +284,11 @@ function handleOpenAccountSubmit(event) {
                 visitor_id: vid,
                 data_principal_id: vid
             })
-        }).catch(function(e){});
-    } catch(e){}
+        }).then(r => r.json()).then(d => console.log("AutoCops Form Consent recorded:", d)).catch(e => console.error("AutoCops capture error:", e));
+    } catch(e) {
+        console.error("AutoCops capture exception:", e);
+    }
 
-    event.preventDefault();
-    const fullName = document.getElementById('fullName').value;
-    const accType = document.getElementById('accountType').value;
     const refNum = 'SB-ACC-' + Math.floor(100000 + Math.random() * 900000);
     showSuccessModal(
         "Application Submitted", 
