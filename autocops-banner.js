@@ -101,11 +101,11 @@
         };
 
         try {
-            fetch("https://app.autocops.org/v1/cookies/consents", {
+            fetch("/api/consent/cookies", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-API-Key": "dpdp_3d2343b3674c92594b5c96e762becd169777be399e877eef"
+                    "X-API-Key": "dpdp_c703c88acf0d3bb21f8643212d49fc9b959cd2b67ff2bfde"
                 },
                 body: JSON.stringify(payload)
             }).catch(function(err){ console.log("AutoCops consent logged."); });

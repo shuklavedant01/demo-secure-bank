@@ -197,7 +197,7 @@
             domain: "demo-secure-bank.onrender.com"
         };
 
-        fetch("https://app.autocops.org/v1/public/dsr/initiate", {
+        fetch("/api/v1/public/dsr/initiate", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(cachedDSRData)
@@ -227,7 +227,7 @@
             code: otp
         });
 
-        fetch("https://app.autocops.org/v1/public/dsr", {
+        fetch("/api/v1/public/dsr", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)

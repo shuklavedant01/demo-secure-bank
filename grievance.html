@@ -279,7 +279,7 @@
         e.preventDefault();
         var contactVal = document.getElementById('grv-contact').value;
         var isPhone = contactVal.includes('+') || /^\d{10}$/.test(contactVal);
-        var ep = isPhone ? "https://app.autocops.org/v1/public/grievance/initiate-mobile" : "https://app.autocops.org/v1/public/grievance/initiate";
+        var ep = isPhone ? "/api/grievance/initiate-mobile" : "/api/grievance/initiate";
 
         cachedGrvPayload = {
             name: document.getElementById('grv-name').value,
@@ -318,7 +318,7 @@
             code: otp
         });
 
-        fetch("https://app.autocops.org/v1/public/grievance", {
+        fetch("/api/grievance", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
