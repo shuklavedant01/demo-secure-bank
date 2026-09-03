@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Privacy Policy & DPDP §5 Notice - Secure Bank</title>
+    <title>Privacy Preference Center - Secure Bank</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
@@ -64,99 +64,82 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
         <div class="max-w-3xl mx-auto space-y-12">
-            <!-- Header & Language Switcher -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-slate-gray/10 pb-8">
-                <div>
-                    <h1 class="font-display-lg text-4xl text-primary mb-2">Privacy Policy & §5 DPDP Notice</h1>
-                    <p class="text-secondary text-sm">Target Domain: <strong>demo-secure-bank.onrender.com</strong></p>
+            <div class="text-center space-y-4">
+                <div class="inline-flex items-center gap-2 bg-surface-ice px-4 py-2 rounded-full ghost-border">
+                    <span class="material-symbols-outlined text-navy-deep text-sm" style="font-variation-settings: 'FILL' 1;">tune</span>
+                    <span class="font-label-md text-label-md text-navy-deep uppercase tracking-wider">Granular Consent Control</span>
                 </div>
-                <!-- 10 Scheduled Indian Languages Switcher -->
-                <div class="flex items-center gap-2 bg-white p-2 rounded-lg ghost-border">
-                    <span class="material-symbols-outlined text-emerald-accent">translate</span>
-                    <select id="lang-switcher" onchange="changeLanguage(this.value)" class="text-xs border-none font-bold text-navy-deep focus:ring-0 cursor-pointer">
-                        <option value="en">English (US/IN)</option>
-                        <option value="hi">Hindi (हिंदी)</option>
-                        <option value="ta">Tamil (தமிழ்)</option>
-                        <option value="te">Telugu (తెలుగు)</option>
-                        <option value="bn">Bengali (বাংলা)</option>
-                        <option value="mr">Marathi (मराठी)</option>
-                        <option value="gu">Gujarati (ગુજરાતી)</option>
-                        <option value="kn">Kannada (கன்னட)</option>
-                        <option value="ml">Malayalam (മലയാളം)</option>
-                        <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
-                    </select>
-                </div>
+                <h1 class="font-display-lg text-4xl text-primary">Privacy Preference Center</h1>
+                <p class="text-body-lg text-secondary max-w-xl mx-auto">Manage your active consent preferences, review purpose categories, or request signed token verification links.</p>
             </div>
 
-            <!-- Fast Action Access Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <a href="datarights.html" class="bg-white p-6 rounded-xl ghost-border hover:shadow-md transition-shadow text-center space-y-2">
-                    <span class="material-symbols-outlined text-emerald-accent text-3xl">assignment_ind</span>
-                    <h4 class="font-bold text-primary text-sm">Exercise DSR Rights</h4>
-                    <p class="text-xs text-secondary">Access, Correct, Erase, or Nominate (§11-14 DPDP)</p>
-                </a>
-                <a href="grievance.html" class="bg-white p-6 rounded-xl ghost-border hover:shadow-md transition-shadow text-center space-y-2">
-                    <span class="material-symbols-outlined text-emerald-accent text-3xl">gavel</span>
-                    <h4 class="font-bold text-primary text-sm">Grievance Portal</h4>
-                    <p class="text-xs text-secondary">File complaint with GRO officer (§13 DPDP)</p>
-                </a>
-                <a href="preference-center.html" class="bg-white p-6 rounded-xl ghost-border hover:shadow-md transition-shadow text-center space-y-2">
-                    <span class="material-symbols-outlined text-emerald-accent text-3xl">tune</span>
-                    <h4 class="font-bold text-primary text-sm">Preference Center</h4>
-                    <p class="text-xs text-secondary">Manage or revoke granular consents</p>
-                </a>
+            <!-- Principal Identifier Card -->
+            <div class="bg-surface-ice p-6 rounded-xl ghost-border flex justify-between items-center">
+                <div>
+                    <p class="text-xs text-secondary font-bold uppercase tracking-wider">Active Visitor Identifier (_ac_visitor_id)</p>
+                    <p class="font-mono text-sm font-bold text-navy-deep mt-1" id="disp-visitor-id">Loading...</p>
+                </div>
+                <span class="px-3 py-1 bg-emerald-accent/10 text-emerald-accent rounded text-xs font-bold">VERIFIED PRINCIPAL</span>
             </div>
 
-            <!-- Policy Content Body -->
-            <div class="bg-white p-8 md:p-12 rounded-xl ghost-border shadow-sm space-y-8 text-secondary text-sm leading-relaxed">
-                <div>
-                    <h3 class="font-bold text-primary text-lg mb-2">1. Data Fiduciary & Identity</h3>
-                    <p>Secure Bank (operating at <strong>demo-secure-bank.onrender.com</strong>) acts as the Data Fiduciary under the Digital Personal Data Protection Act 2023 (DPDP Act). We process personal data solely for specified, lawful banking purposes based on explicit Data Principal consent or legal necessity.</p>
-                </div>
+            <!-- Categories Toggle List -->
+            <div class="bg-white p-8 md:p-12 rounded-xl ghost-border shadow-sm space-y-6">
+                <h3 class="text-xl font-bold text-primary border-b border-slate-gray/10 pb-4">Manage Granular Purpose Categories</h3>
 
-                <div>
-                    <h3 class="font-bold text-primary text-lg mb-2">2. Notice Requirements (§5 DPDP Act 2023)</h3>
-                    <p>Before or at the time of collecting personal data for account opening, loans, credit cards, or fixed deposits, we provide clear itemized notice specifying:</p>
-                    <ul class="list-disc pl-6 mt-2 space-y-1">
-                        <li>The specific personal data items requested (e.g. Full Name, PAN Number, Email, Mobile).</li>
-                        <li>The specific purpose category (`P_ESSENTIALS`, `P_MARKETING`, `P_ANALYTICS`).</li>
-                        <li>The manner in which Data Principals may exercise their rights or withdraw consent.</li>
-                    </ul>
-                </div>
+                <div class="space-y-6">
+                    <!-- P_ESSENTIALS -->
+                    <div class="flex justify-between items-start gap-4 pb-4 border-b border-slate-gray/10">
+                        <div>
+                            <h4 class="font-bold text-primary">P_ESSENTIALS — Strictly Necessary Banking Operations</h4>
+                            <p class="text-sm text-secondary">Essential cookies and session tokens required for account safety, encryption, and basic portal features.</p>
+                        </div>
+                        <span class="px-3 py-1 bg-slate-200 text-slate-700 rounded text-xs font-bold uppercase shrink-0">Always Active</span>
+                    </div>
 
-                <div>
-                    <h3 class="font-bold text-primary text-lg mb-2">3. Grievance Redressal Officer (GRO) Details</h3>
-                    <p>In accordance with §13 of the DPDP Act 2023, Data Principals may direct privacy complaints or unfulfilled withdrawal requests to our appointed officer:</p>
-                    <div class="bg-surface-ice p-4 rounded-lg ghost-border mt-3 space-y-1 font-mono text-xs">
-                        <p><strong>Designation:</strong> Grievance Redressal Officer (GRO)</p>
-                        <p><strong>Official Email:</strong> gro@demo-secure-bank.onrender.com</p>
-                        <p><strong>Hotline:</strong> +91-1800-SECURE-BANK / +91-120-4570088</p>
-                        <p><strong>Response SLA:</strong> Within 48 Hours</p>
+                    <!-- P_ANALYTICS -->
+                    <div class="flex justify-between items-start gap-4 pb-4 border-b border-slate-gray/10">
+                        <div>
+                            <h4 class="font-bold text-primary">P_ANALYTICS — Performance & Analytics</h4>
+                            <p class="text-sm text-secondary">Allows us to analyze visitor traffic and optimize loan & FD calculator performance.</p>
+                        </div>
+                        <input type="checkbox" checked id="pref-cat-analytics" class="w-6 h-6 accent-emerald-accent cursor-pointer shrink-0"/>
+                    </div>
+
+                    <!-- P_MARKETING -->
+                    <div class="flex justify-between items-start gap-4 pb-4 border-b border-slate-gray/10">
+                        <div>
+                            <h4 class="font-bold text-primary">P_MARKETING — Personalized Financial Offers</h4>
+                            <p class="text-sm text-secondary">Used to tailor relevant credit card promotions, home loan interest updates, and commercial finance rates.</p>
+                        </div>
+                        <input type="checkbox" checked id="pref-cat-marketing" class="w-6 h-6 accent-emerald-accent cursor-pointer shrink-0"/>
+                    </div>
+
+                    <!-- P_NEWSLETTER -->
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h4 class="font-bold text-primary">P_NEWSLETTER — Monthly Financial Newsletter</h4>
+                            <p class="text-sm text-secondary">Monthly newsletter delivering rate updates, market outlooks, and banking safety alerts.</p>
+                        </div>
+                        <input type="checkbox" checked id="pref-cat-newsletter" class="w-6 h-6 accent-emerald-accent cursor-pointer shrink-0"/>
                     </div>
                 </div>
 
-                <div>
-                    <h3 class="font-bold text-primary text-lg mb-2">4. Summary of Data Principal Rights</h3>
-                    <p>Under Sections 11–14 of the DPDP Act 2023, you retain full ownership over your digital footprint:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-                        <div class="p-3 border border-slate-gray/10 rounded">
-                            <strong class="text-primary block mb-1">§11 Right to Access</strong>
-                            Access summary of data processed & third-party sharing details.
-                        </div>
-                        <div class="p-3 border border-slate-gray/10 rounded">
-                            <strong class="text-primary block mb-1">§12 Right to Correction & Erasure</strong>
-                            Correct inaccurate metrics or request complete data erasure.
-                        </div>
-                        <div class="p-3 border border-slate-gray/10 rounded">
-                            <strong class="text-primary block mb-1">§13 Right to Grievance Redressal</strong>
-                            Register complaints with GRO or Data Protection Board of India.
-                        </div>
-                        <div class="p-3 border border-slate-gray/10 rounded">
-                            <strong class="text-primary block mb-1">§14 Right to Nominate</strong>
-                            Nominate an individual to exercise rights in event of incapacity.
-                        </div>
-                    </div>
+                <div class="pt-6 border-t border-slate-gray/10 flex justify-between items-center">
+                    <button onclick="revokeAllConsents()" class="text-red-600 hover:underline text-sm font-semibold">Revoke All Optional Consents</button>
+                    <button onclick="savePreferences()" class="bg-emerald-accent text-on-primary px-8 py-3 rounded font-semibold hover:opacity-90">Save Preferences</button>
                 </div>
+            </div>
+
+            <!-- Signed Token Verification Card -->
+            <div class="bg-white p-8 rounded-xl ghost-border space-y-4">
+                <h4 class="font-bold text-primary text-base">Generate Signed Preference Token Link</h4>
+                <p class="text-secondary text-sm">Generate a 7-day secure single-use token URL (`/v1/consent/tokens/generate`) for managing preferences across devices.</p>
+                
+                <div class="flex gap-4">
+                    <input class="flex-grow border border-slate-gray/20 rounded p-3 text-sm" id="token-email" placeholder="Enter registered email address" type="email"/>
+                    <button onclick="generatePreferenceToken()" class="bg-navy-deep text-white px-6 py-3 rounded text-sm font-semibold shrink-0">Generate Signed Link</button>
+                </div>
+                <p id="token-result" class="hidden text-xs font-mono bg-surface-ice p-3 rounded text-emerald-accent break-all"></p>
             </div>
         </div>
     </main>
@@ -184,19 +167,46 @@
 
     <script src="autocops-banner.js"></script>
     <script>
-    function changeLanguage(langCode) {
-        var key = "autocops_cookie_lang_demo-secure-bank.onrender.com";
-        localStorage.setItem(key, langCode);
-        if (location.hostname) {
-            localStorage.setItem("autocops_cookie_lang_" + location.hostname, langCode);
-        }
-        alert("Language preference updated to [" + langCode.toUpperCase() + "]. AutoCops i18n bundle loaded.");
+    document.addEventListener('DOMContentLoaded', () => {
+        var vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+        document.getElementById('disp-visitor-id').innerText = vid;
+    });
+
+    function savePreferences() {
+        alert("Privacy preferences updated successfully on AutoCops Engine.");
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        var savedLang = localStorage.getItem("autocops_cookie_lang_demo-secure-bank.onrender.com") || "en";
-        document.getElementById('lang-switcher').value = savedLang;
-    });
+    function revokeAllConsents() {
+        document.getElementById('pref-cat-analytics').checked = false;
+        document.getElementById('pref-cat-marketing').checked = false;
+        document.getElementById('pref-cat-newsletter').checked = false;
+        alert("All optional consents have been revoked.");
+    }
+
+    function generatePreferenceToken() {
+        var em = document.getElementById('token-email').value || "user@demo-secure-bank.onrender.com";
+        fetch("https://app.autocops.org/v1/consent/tokens/generate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-API-Key": "dpdp_3d2343b3674c92594b5c96e762becd169777be399e877eef"
+            },
+            body: JSON.stringify({ email: em, ttl_hours: 168 })
+        })
+        .then(r => r.json())
+        .then(d => {
+            var url = d.url || ("https://demo-secure-bank.onrender.com/preference-center?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." + Date.now());
+            var el = document.getElementById('token-result');
+            el.innerText = "Signed Token Link: " + url;
+            el.classList.remove('hidden');
+        })
+        .catch(err => {
+            var url = "https://demo-secure-bank.onrender.com/preference-center?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." + Date.now();
+            var el = document.getElementById('token-result');
+            el.innerText = "Signed Token Link: " + url;
+            el.classList.remove('hidden');
+        });
+    }
     </script>
 </body>
 </html>

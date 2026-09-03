@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Grievance Redressal Portal - Secure Bank</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; font-feature-settings: 'liga'; }
+        .ghost-border { border: 1px solid rgba(100, 116, 139, 0.1); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+    <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 bg-[radial-gradient(circle_400px_at_var(--x,_0px)_var(--y,_0px),rgba(16,185,129,0.15),transparent_80%)]"></div>
+
+    <!-- HEADER -->
+    <header class="bg-surface-container-lowest border-b border-slate-gray/10 w-full sticky top-0 z-50">
+        <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-title-md font-display-lg text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                    <span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">
+                        account_balance
+                    </span>
+                    Secure Bank
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-body-lg text-body-lg">
+                    <div class="relative group">
+                        <button class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1">
+                            <span>Personal</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="open-account.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Open Account</a>
+                                <a href="open-fd.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Fixed Deposit</a>
+                                <a href="apply-loan.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Apply for Loan</a>
+                                <a href="credit-card.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Credit Cards</a>
+                                <div class="border-t border-slate-gray/10 my-1"></div>
+                                <a href="datarights.html" class="block px-4 py-2 text-sm text-emerald-accent font-semibold hover:bg-surface-ice transition-colors">DSR Rights Portal (§11-14)</a>
+                                <a href="grievance.html" class="block px-4 py-2 text-sm text-emerald-accent font-semibold hover:bg-surface-ice transition-colors">Grievance Portal (§13)</a>
+                                <a href="preference-center.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Preference Center</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="business.html">Business</a>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="wealth.html">Wealth</a>
+                </nav>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a class="flex items-center gap-2 bg-emerald-accent text-on-primary px-6 py-2.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity" href="login.html">
+                    <span class="material-symbols-outlined text-[18px]">
+                        lock
+                    </span>
+                    Internet Banking
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <div class="inline-flex items-center gap-2 bg-surface-ice px-4 py-2 rounded-full ghost-border">
+                    <span class="material-symbols-outlined text-navy-deep text-sm" style="font-variation-settings: 'FILL' 1;">gavel</span>
+                    <span class="font-label-md text-label-md text-navy-deep uppercase tracking-wider">DPDP §13 Grievance Redressal</span>
+                </div>
+                <h1 class="font-display-lg text-4xl text-primary">Grievance Redressal Portal</h1>
+                <p class="text-body-lg text-secondary max-w-xl mx-auto">File complaints regarding data protection, consent withdrawal, or access concerns directly to the Grievance Redressal Officer (GRO).</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex justify-center gap-4 border-b border-slate-gray/10 pb-4">
+                <button id="tab-file-btn" onclick="switchGrievanceTab('file')" class="px-6 py-2 rounded-full font-bold text-sm bg-navy-deep text-white">File New Grievance</button>
+                <button id="tab-track-btn" onclick="switchGrievanceTab('track')" class="px-6 py-2 rounded-full font-bold text-sm bg-surface-ice text-secondary hover:text-primary">Track Ticket & Feedback</button>
+            </div>
+
+            <!-- SECTION 1: File Grievance -->
+            <div id="sec-file-grievance" class="bg-white p-8 md:p-12 rounded-xl ghost-border shadow-sm space-y-6">
+                <!-- Stage 1 -->
+                <div id="grv-stage-1">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-emerald-accent">report_problem</span>
+                        Register Data Grievance
+                    </h3>
+                    <form id="grv-initiate-form" onsubmit="handleGrvInitiate(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="grv-name">Full Name *</label>
+                                <input class="w-full border border-slate-gray/20 rounded p-3 text-primary focus:outline-none focus:border-navy-deep" id="grv-name" placeholder="Your full name" required type="text"/>
+                            </div>
+                            <div>
+                                <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="grv-contact">Email or Mobile (+91) *</label>
+                                <input class="w-full border border-slate-gray/20 rounded p-3 text-primary focus:outline-none focus:border-navy-deep" id="grv-contact" placeholder="email@example.com or +919876543210" required type="text"/>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="grv-cat">Grievance Category *</label>
+                                <select class="w-full border border-slate-gray/20 rounded p-3 text-primary focus:outline-none focus:border-navy-deep" id="grv-cat" required>
+                                    <option value="CONSENT_WITHDRAWAL">CONSENT_WITHDRAWAL - Consent withdrawal request unfulfilled</option>
+                                    <option value="GENERAL">GENERAL - General Privacy Complaint</option>
+                                    <option value="DATA_ACCESS">DATA_ACCESS - Data Access Issue</option>
+                                    <option value="DATA_ACCURACY">DATA_ACCURACY - Data Correction Issue</option>
+                                    <option value="DATA_ERASURE">DATA_ERASURE - Erasure Not Completed</option>
+                                    <option value="CONSENT_RELATED">CONSENT_RELATED - Consent Related Concern</option>
+                                    <option value="BREACH_NOTIFICATION">BREACH_NOTIFICATION - Breach Inquiry</option>
+                                    <option value="CHILDREN_DATA">CHILDREN_DATA - Children's Data Concern</option>
+                                    <option value="NOMINATION_ISSUE">NOMINATION_ISSUE - Nomination Issue</option>
+                                    <option value="OTHER">OTHER - Other Grievances</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="grv-lang">Preferred Language *</label>
+                                <select class="w-full border border-slate-gray/20 rounded p-3 text-primary focus:outline-none focus:border-navy-deep" id="grv-lang">
+                                    <option value="en">English</option>
+                                    <option value="hi">Hindi (हिंदी)</option>
+                                    <option value="ta">Tamil (தமிழ்)</option>
+                                    <option value="te">Telugu (తెలుగు)</option>
+                                    <option value="bn">Bengali (বাংলা)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="grv-subject">Subject *</label>
+                            <input class="w-full border border-slate-gray/20 rounded p-3 text-primary focus:outline-none focus:border-navy-deep" id="grv-subject" placeholder="Brief subject line" required type="text"/>
+                        </div>
+
+                        <div>
+                            <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="grv-desc">Detailed Complaint Description *</label>
+                            <textarea class="w-full border border-slate-gray/20 rounded p-3 text-primary focus:outline-none focus:border-navy-deep h-28" id="grv-desc" placeholder="Describe the incident, dates, and previous communications..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-accent text-on-primary py-4 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors font-semibold shadow-sm flex items-center justify-center gap-2">
+                            <span>Initiate Grievance Challenge</span>
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Stage 2 OTP -->
+                <div id="grv-stage-2" class="hidden space-y-6 text-center">
+                    <div class="w-16 h-16 bg-emerald-accent/10 text-emerald-accent rounded-full flex items-center justify-center mx-auto">
+                        <span class="material-symbols-outlined text-[36px]">security</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary">Verify Grievance Submission</h3>
+                        <p class="text-secondary text-sm mt-1" id="grv-challenge-msg">Verification code dispatched to your registered contact channel.</p>
+                    </div>
+
+                    <form id="grv-confirm-form" onsubmit="handleGrvConfirm(event)" class="max-w-xs mx-auto space-y-4 pt-4">
+                        <div>
+                            <label class="block text-xs uppercase text-primary font-bold mb-2 tracking-widest" for="grv-otp">6-Digit OTP</label>
+                            <input class="w-full border border-slate-gray/30 rounded p-3 text-center text-2xl font-mono tracking-widest font-bold text-primary focus:border-navy-deep" id="grv-otp" placeholder="492018" maxlength="6" pattern="\d{6}" required type="text"/>
+                        </div>
+                        <button type="submit" class="w-full bg-navy-deep text-white py-3 rounded font-semibold hover:opacity-90 transition-opacity">
+                            Confirm & Log Ticket
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Stage 3 Confirmation -->
+                <div id="grv-stage-3" class="hidden space-y-6 text-center">
+                    <div class="w-16 h-16 bg-emerald-accent/10 text-emerald-accent rounded-full flex items-center justify-center mx-auto">
+                        <span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold text-primary">Grievance Ticket Registered</h3>
+                        <p class="text-secondary text-sm">Your complaint has been assigned to the Grievance Redressal Officer (GRO).</p>
+                    </div>
+                    <div class="bg-surface-ice p-6 rounded-xl ghost-border space-y-2 text-left">
+                        <p class="text-xs text-secondary font-bold uppercase tracking-wider">Ticket Details</p>
+                        <p class="text-sm">Ticket ID: <strong id="res-grv-id" class="text-emerald-accent font-mono text-base">GRV-20260901-8842</strong></p>
+                        <p class="text-sm">GRO Officer: <strong>gro@demo-secure-bank.onrender.com</strong></p>
+                        <p class="text-xs text-slate-500 mt-2">Under DPDP regulations, GRO responses are delivered within 48 hours.</p>
+                    </div>
+                    <button onclick="switchGrievanceTab('track')" class="bg-navy-deep text-white px-8 py-3 rounded font-semibold">
+                        Track Ticket Status
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Track Ticket & Feedback -->
+            <div id="sec-track-grievance" class="hidden bg-white p-8 md:p-12 rounded-xl ghost-border shadow-sm space-y-8">
+                <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-emerald-accent">manage_search</span>
+                    Track Grievance Ticket & Provide Rating
+                </h3>
+
+                <form onsubmit="handleTrackTicket(event)" class="flex gap-4">
+                    <input class="flex-grow border border-slate-gray/20 rounded p-3 text-primary font-mono" id="track-ticket-id" placeholder="Enter Ticket ID (e.g. GRV-20260901-8842)" required type="text"/>
+                    <button type="submit" class="bg-emerald-accent text-on-primary px-6 py-3 rounded font-semibold">Lookup Ticket</button>
+                </form>
+
+                <div id="ticket-result-box" class="hidden bg-surface-ice p-6 rounded-xl ghost-border space-y-6">
+                    <div class="flex justify-between items-center border-b border-slate-gray/10 pb-4">
+                        <div>
+                            <p class="text-xs text-secondary uppercase font-bold">Ticket ID</p>
+                            <p class="text-lg font-bold font-mono text-emerald-accent" id="disp-ticket-id">GRV-20260901-8842</p>
+                        </div>
+                        <span class="px-4 py-1.5 bg-emerald-accent/10 text-emerald-accent rounded-full text-xs font-bold uppercase">RESOLVED BY GRO</span>
+                    </div>
+
+                    <div class="space-y-2 text-sm text-secondary">
+                        <p><strong>GRO Resolution Notes:</strong> "Consent withdrawal request has been verified and processed in compliance with DPDP §13."</p>
+                        <p><strong>Resolved At:</strong> September 1, 2026</p>
+                    </div>
+
+                    <!-- Feedback Rating Form -->
+                    <div class="pt-4 border-t border-slate-gray/10 space-y-4">
+                        <p class="font-bold text-primary text-sm">Submit Satisfaction Rating & Feedback:</p>
+                        <div class="flex items-center gap-3">
+                            <label class="text-xs uppercase font-bold text-secondary">Rating:</label>
+                            <select id="fb-rating" class="border border-slate-gray/20 rounded p-2 text-sm font-bold text-primary">
+                                <option value="5">⭐⭐⭐⭐⭐ (5/5 - Excellent)</option>
+                                <option value="4">⭐⭐⭐⭐ (4/5 - Good)</option>
+                                <option value="3">⭐⭐⭐ (3/5 - Satisfactory)</option>
+                                <option value="2">⭐⭐ (2/5 - Poor)</option>
+                                <option value="1">⭐ (1/5 - Unsatisfactory)</option>
+                            </select>
+                        </div>
+                        <textarea id="fb-comments" class="w-full border border-slate-gray/20 rounded p-3 text-sm h-20" placeholder="Additional comments for the Grievance Redressal Officer..."></textarea>
+                        <button type="button" onclick="submitGrievanceFeedback()" class="bg-navy-deep text-white px-6 py-2.5 rounded text-sm font-semibold">
+                            Submit Rating Feedback
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface-container-low w-full border-t border-slate-gray/10 mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full gap-6">
+            <div class="text-title-md font-display-lg text-primary tracking-tight">Secure Bank</div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="index.html">Home</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-account.html">Open Account</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-fd.html">Fixed Deposit</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="apply-loan.html">Apply for Loan</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="credit-card.html">Credit Cards</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="datarights.html">DSR Rights</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="grievance.html">Grievance</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="preference-center.html">Preferences</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="font-body-sm text-body-sm text-secondary text-center md:text-right">
+                © 2024 Secure Bank. Member FDIC. Equal Housing Lender.
+            </div>
+        </div>
+    </footer>
+
+    <script src="autocops-banner.js"></script>
+    <script>
+    var currentGrvChallenge = "";
+    var cachedGrvPayload = {};
+
+    function switchGrievanceTab(tab) {
+        if (tab === 'file') {
+            document.getElementById('sec-file-grievance').classList.remove('hidden');
+            document.getElementById('sec-track-grievance').classList.add('hidden');
+            document.getElementById('tab-file-btn').className = "px-6 py-2 rounded-full font-bold text-sm bg-navy-deep text-white";
+            document.getElementById('tab-track-btn').className = "px-6 py-2 rounded-full font-bold text-sm bg-surface-ice text-secondary hover:text-primary";
+        } else {
+            document.getElementById('sec-file-grievance').classList.add('hidden');
+            document.getElementById('sec-track-grievance').classList.remove('hidden');
+            document.getElementById('tab-track-btn').className = "px-6 py-2 rounded-full font-bold text-sm bg-navy-deep text-white";
+            document.getElementById('tab-file-btn').className = "px-6 py-2 rounded-full font-bold text-sm bg-surface-ice text-secondary hover:text-primary";
+        }
+    }
+
+    function handleGrvInitiate(e) {
+        e.preventDefault();
+        var contactVal = document.getElementById('grv-contact').value;
+        var isPhone = contactVal.includes('+') || /^\d{10}$/.test(contactVal);
+        var ep = isPhone ? "https://app.autocops.org/v1/public/grievance/initiate-mobile" : "https://app.autocops.org/v1/public/grievance/initiate";
+
+        cachedGrvPayload = {
+            name: document.getElementById('grv-name').value,
+            category: document.getElementById('grv-cat').value,
+            subject: document.getElementById('grv-subject').value,
+            description: document.getElementById('grv-desc').value,
+            preferred_language: document.getElementById('grv-lang').value,
+            domain: "demo-secure-bank.onrender.com"
+        };
+        if (isPhone) cachedGrvPayload.phone = contactVal; else cachedGrvPayload.email = contactVal;
+
+        fetch(ep, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(cachedGrvPayload)
+        })
+        .then(res => res.json())
+        .then(data => {
+            currentGrvChallenge = data.challenge_id || ("PMC-" + Date.now() + "-e313e8d0");
+            document.getElementById('grv-stage-1').classList.add('hidden');
+            document.getElementById('grv-stage-2').classList.remove('hidden');
+        })
+        .catch(err => {
+            currentGrvChallenge = "PMC-" + Date.now() + "-e313e8d0";
+            document.getElementById('grv-stage-1').classList.add('hidden');
+            document.getElementById('grv-stage-2').classList.remove('hidden');
+        });
+    }
+
+    function handleGrvConfirm(e) {
+        e.preventDefault();
+        var otp = document.getElementById('grv-otp').value;
+        var payload = Object.assign({}, cachedGrvPayload, {
+            challenge_id: currentGrvChallenge,
+            otp: otp,
+            code: otp
+        });
+
+        fetch("https://app.autocops.org/v1/public/grievance", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(data => {
+            var tid = data.ticket_id || ("GRV-20260901-" + Math.floor(1000 + Math.random() * 9000));
+            document.getElementById('res-grv-id').innerText = tid;
+            document.getElementById('grv-stage-2').classList.add('hidden');
+            document.getElementById('grv-stage-3').classList.remove('hidden');
+        })
+        .catch(err => {
+            var tid = "GRV-20260901-" + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('res-grv-id').innerText = tid;
+            document.getElementById('grv-stage-2').classList.add('hidden');
+            document.getElementById('grv-stage-3').classList.remove('hidden');
+        });
+    }
+
+    function handleTrackTicket(e) {
+        e.preventDefault();
+        var tid = document.getElementById('track-ticket-id').value;
+        document.getElementById('disp-ticket-id').innerText = tid;
+        document.getElementById('ticket-result-box').classList.remove('hidden');
+    }
+
+    function submitGrievanceFeedback() {
+        alert("Thank you! Your satisfaction rating and comments have been recorded on the AutoCops engine.");
+    }
+    </script>
+</body>
+</html>

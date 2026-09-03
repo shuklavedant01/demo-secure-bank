@@ -143,12 +143,16 @@
                             <span>Personal</span>
                             <span class="material-symbols-outlined text-[16px]">expand_more</span>
                         </button>
-                        <div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                             <div class="py-2">
                                 <a href="open-account.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Open Account</a>
                                 <a href="open-fd.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Fixed Deposit</a>
                                 <a href="apply-loan.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Apply for Loan</a>
                                 <a href="credit-card.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Credit Cards</a>
+                                <div class="border-t border-slate-gray/10 my-1"></div>
+                                <a href="datarights.html" class="block px-4 py-2 text-sm text-emerald-accent font-semibold hover:bg-surface-ice transition-colors">DSR Rights Portal (§11-14)</a>
+                                <a href="grievance.html" class="block px-4 py-2 text-sm text-emerald-accent font-semibold hover:bg-surface-ice transition-colors">Grievance Portal (§13)</a>
+                                <a href="preference-center.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Preference Center</a>
                             </div>
                         </div>
                     </div>
@@ -224,7 +228,17 @@
         <textarea class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep h-24" id="address" placeholder="Enter your current residential address"></textarea>
     </div>
 
-    <div class="flex justify-end mt-12">
+    
+    <div class="mb-6 p-4 bg-surface-ice rounded-lg ghost-border space-y-3">
+        <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" checked required class="mt-1 w-4 h-4 accent-emerald-accent cursor-pointer"/>
+            <span class="text-xs text-secondary leading-relaxed">
+                <strong>DPDP §5 Consent Notice:</strong> I hereby explicitly consent to Secure Bank processing my personal data (Name, DOB, Email, Mobile, PAN) for account opening under <code>P_ESSENTIALS</code> and marketing updates under <code>P_MARKETING</code>. See <a href="privacy.html" class="text-emerald-accent underline" target="_blank">Privacy Policy</a>.
+            </span>
+        </label>
+    </div>
+
+<div class="flex justify-end mt-12">
         <button class="w-full bg-emerald-accent text-on-primary font-title-md text-title-md py-4 rounded hover:bg-emerald-accent/90 transition-colors shadow-sm text-center font-semibold" type="submit">
             Apply
         </button>
@@ -241,6 +255,36 @@
 
 <script>
 function handleOpenAccountSubmit(event) {
+
+    var vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+    try {
+        fetch("https://app.autocops.org/v1/consent/external/capture", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-API-Key": "dpdp_3d2343b3674c92594b5c96e762becd169777be399e877eef"
+            },
+            body: JSON.stringify({
+                consent_method: "EXPLICIT",
+                email: document.getElementById('email').value,
+                data_principal_email: document.getElementById('email').value,
+                data_principal_name: fullName,
+                name: fullName,
+                data_principal_phone: document.getElementById('mobile').value,
+                phone: document.getElementById('mobile').value,
+                geo_jurisdiction: "IN",
+                language: "en",
+                legal_basis: "CONSENT",
+                notice_version: "demo-secure-bank-v1",
+                purpose: "Personal Banking Account Opening",
+                purpose_category: "STRICTLY_NECESSARY",
+                purpose_id: "P_ESSENTIALS",
+                visitor_id: vid,
+                data_principal_id: vid
+            })
+        }).catch(function(e){});
+    } catch(e){}
+
     event.preventDefault();
     const fullName = document.getElementById('fullName').value;
     const accType = document.getElementById('accountType').value;
@@ -301,5 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+<script src="autocops-banner.js"></script>
 </body>
 </html>
