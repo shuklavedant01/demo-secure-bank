@@ -171,81 +171,118 @@
             </div>
         </div>
     </header>
-<main class="flex-grow flex items-center justify-center py-12 md:py-24 px-margin-mobile md:px-margin-desktop">
-<div class="w-full max-w-2xl">
+<main class="flex-grow flex items-center justify-center py-12 md:py-20 px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-3xl">
 <!-- Header Section -->
-<div class="text-center mb-12">
+<div class="text-center mb-8">
 <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Open Your Account</h2>
 <p class="font-body-lg text-body-lg text-secondary">Simple, secure, and completed in under 2 minutes.</p>
 </div>
 
 <!-- Form Container -->
-<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 ghost-border shadow-[0_0_30px_rgba(15,23,42,0.04)]">
-<div class="flex items-center mb-8 pb-4 border-b border-slate-gray/10">
+<div class="bg-surface-container-lowest rounded-xl p-6 md:p-10 ghost-border shadow-[0_0_30px_rgba(15,23,42,0.04)]">
+<div class="flex items-center mb-6 pb-4 border-b border-slate-gray/10">
 <span class="material-symbols-outlined text-navy-deep mr-3" style="font-variation-settings: 'FILL' 1;">shield</span>
 <span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Secure 256-bit Encryption</span>
 </div>
-<form id="open-account-form" onsubmit="handleOpenAccountSubmit(event)">
-    <div class="mb-6">
-        <label class="block font-label-md text-label-md text-primary mb-1 uppercase tracking-widest font-semibold" for="fullName">Full Name *</label>
-        <p class="text-xs text-secondary mb-2">As per PAN card</p>
-        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="fullName" placeholder="Enter your full name" required type="text"/>
-    </div>
-    
-    <div class="mb-6">
-        <label class="block font-label-md text-label-md text-primary mb-1 uppercase tracking-widest font-semibold" for="dob">Date of Birth *</label>
-        <p class="text-xs text-secondary mb-2">dd-mm-yyyy</p>
-        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="dob" placeholder="dd-mm-yyyy" required type="text" pattern="\d{2}-\d{2}-\d{4}" title="Please enter DOB in dd-mm-yyyy format"/>
+
+<form id="open-account-form" onsubmit="handleOpenAccountSubmit(event)" class="space-y-6">
+    <!-- Row 1: Full Name & DOB Calendar -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <label class="block font-label-md text-label-md text-primary mb-1 uppercase tracking-widest font-semibold" for="fullName">Full Name *</label>
+            <p class="text-xs text-secondary mb-2">As per PAN card</p>
+            <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="fullName" placeholder="Enter your full name" required type="text"/>
+        </div>
+        <div>
+            <label class="block font-label-md text-label-md text-primary mb-1 uppercase tracking-widest font-semibold" for="dob">Date of Birth *</label>
+            <p class="text-xs text-secondary mb-2">Select from calendar</p>
+            <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep cursor-pointer" id="dob" required type="date"/>
+        </div>
     </div>
 
-    <div class="mb-6">
-        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="email">Email *</label>
-        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="email" placeholder="Enter your email" required type="email"/>
+    <!-- Row 2: Email & Mobile -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="email">Email *</label>
+            <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="email" placeholder="Enter your email" required type="email"/>
+        </div>
+        <div>
+            <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="mobile">Mobile Number *</label>
+            <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="mobile" placeholder="Enter your 10-digit mobile number" required type="tel" pattern="[6789]\d{9}" title="Please enter a valid 10-digit Indian mobile number"/>
+        </div>
     </div>
 
-    <div class="mb-6">
-        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="mobile">Mobile Number *</label>
-        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="mobile" placeholder="Enter your 10-digit mobile number" required type="tel" pattern="[6789]\d{9}" title="Please enter a valid 10-digit Indian mobile number"/>
+    <!-- Row 3: PAN Number & Account Type -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="pan">PAN Number *</label>
+            <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="pan" placeholder="Enter your PAN number" required type="text"/>
+        </div>
+        <div>
+            <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="accountType">Account Type *</label>
+            <select class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="accountType" required>
+                <option value="" disabled selected>Select account type</option>
+                <option value="Savings">Savings Account</option>
+                <option value="Checking">Checking Account</option>
+                <option value="Fixed Deposit">Fixed Deposit Account</option>
+            </select>
+        </div>
     </div>
 
-    <div class="mb-6">
-        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="pan">PAN Number *</label>
-        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="pan" placeholder="Enter your PAN number" required type="text"/>
-    </div>
-
-    <div class="mb-6">
-        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="accountType">Account Type *</label>
-        <select class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="accountType" required>
-            <option value="" disabled selected>Select account type</option>
-            <option value="Savings">Savings Account</option>
-            <option value="Checking">Checking Account</option>
-            <option value="Fixed Deposit">Fixed Deposit Account</option>
-        </select>
-    </div>
-
-    <div class="mb-8">
+    <!-- Row 4: Address -->
+    <div>
         <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="address">Residential Address</label>
-        <textarea class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep h-24" id="address" placeholder="Enter your current residential address"></textarea>
+        <textarea class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep h-20" id="address" placeholder="Enter your current residential address"></textarea>
     </div>
 
-    
-    <div class="mb-6 p-4 bg-surface-ice rounded-lg ghost-border space-y-3">
-        <label class="flex items-start gap-3 cursor-pointer">
-            <input type="checkbox" checked required class="mt-1 w-4 h-4 accent-emerald-accent cursor-pointer"/>
-            <span class="text-xs text-secondary leading-relaxed">
-                <strong>DPDP §5 Consent Notice:</strong> I hereby explicitly consent to Secure Bank processing my personal data (Name, DOB, Email, Mobile, PAN) for account opening under <code>P_ESSENTIALS</code> and marketing updates under <code>P_MARKETING</code>. See <a href="privacy.html" class="text-emerald-accent underline" target="_blank">Privacy Policy</a>.
-            </span>
-        </label>
+    <!-- DPDP §5 Unbundled Consents Card -->
+    <div class="p-6 bg-surface-ice rounded-xl ghost-border space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-gray/10 pb-3">
+            <span class="material-symbols-outlined text-emerald-accent" style="font-variation-settings: 'FILL' 1;">gavel</span>
+            <h4 class="font-bold text-primary text-sm uppercase tracking-wider">DPDP §5 Unbundled Consent Notices</h4>
+        </div>
+        
+        <div class="space-y-3 text-xs text-secondary">
+            <!-- 1. Essential Checkbox (Compulsory to enable submit button) -->
+            <label class="flex items-start gap-3 cursor-pointer p-2 rounded hover:bg-white/50 transition-colors">
+                <input type="checkbox" id="cb-essential" onchange="toggleSubmitButton()" class="mt-0.5 w-4 h-4 accent-emerald-accent cursor-pointer shrink-0"/>
+                <div>
+                    <strong class="text-primary block">1. Essential Processing (Compulsory) *</strong>
+                    <span>I explicitly consent to Secure Bank processing my personal data for account opening and identity verification under <code>P_ESSENTIALS</code>.</span>
+                </div>
+            </label>
+
+            <!-- 2. Analytical Checkbox (Optional) -->
+            <label class="flex items-start gap-3 cursor-pointer p-2 rounded hover:bg-white/50 transition-colors">
+                <input type="checkbox" id="cb-analytics" class="mt-0.5 w-4 h-4 accent-emerald-accent cursor-pointer shrink-0"/>
+                <div>
+                    <strong class="text-primary block">2. Analytical & Service Optimization (Optional)</strong>
+                    <span>I consent to processing analytical data for service improvements under <code>P_ANALYTICS</code>.</span>
+                </div>
+            </label>
+
+            <!-- 3. Marketing Checkbox (Optional) -->
+            <label class="flex items-start gap-3 cursor-pointer p-2 rounded hover:bg-white/50 transition-colors">
+                <input type="checkbox" id="cb-marketing" class="mt-0.5 w-4 h-4 accent-emerald-accent cursor-pointer shrink-0"/>
+                <div>
+                    <strong class="text-primary block">3. Marketing & Offers Communication (Optional)</strong>
+                    <span>I consent to receiving personalized financial offers and product updates under <code>P_MARKETING</code>.</span>
+                </div>
+            </label>
+        </div>
     </div>
 
-<div class="flex justify-end mt-12">
-        <button class="w-full bg-emerald-accent text-on-primary font-title-md text-title-md py-4 rounded hover:bg-emerald-accent/90 transition-colors shadow-sm text-center font-semibold" type="submit">
-            Apply
+    <!-- Submit Button (Disabled by default until Essential checkbox is ticked) -->
+    <div class="mt-8">
+        <button id="open-acc-submit-btn" disabled class="w-full bg-emerald-accent opacity-50 cursor-not-allowed text-on-primary font-title-md text-title-md py-4 rounded transition-all duration-300 shadow-sm text-center font-semibold flex items-center justify-center gap-2" type="submit">
+            <span>Apply</span>
+            <span class="material-symbols-outlined text-[18px]">send</span>
         </button>
     </div>
 </form>
 </div>
-<div class="mt-8 text-center">
+<div class="mt-6 text-center">
 <p class="font-body-sm text-body-sm text-secondary">Already have an account? <a class="text-emerald-accent hover:underline" href="index.html">Log in here</a>.</p>
 </div>
 </div>
@@ -254,6 +291,22 @@
 
 
 <script>
+function toggleSubmitButton() {
+    const essentialCb = document.getElementById('cb-essential');
+    const submitBtn = document.getElementById('open-acc-submit-btn');
+    if (essentialCb && submitBtn) {
+        if (essentialCb.checked) {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            submitBtn.classList.add('hover:bg-emerald-accent/90', 'cursor-pointer');
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            submitBtn.classList.remove('hover:bg-emerald-accent/90', 'cursor-pointer');
+        }
+    }
+}
+
 function handleOpenAccountSubmit(event) {
     event.preventDefault();
     const fullName = document.getElementById('fullName').value;
@@ -261,6 +314,9 @@ function handleOpenAccountSubmit(event) {
     const mobile = document.getElementById('mobile').value;
     const accType = document.getElementById('accountType').value;
     const vid = localStorage.getItem('_ac_visitor_id') || 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+
+    const analyticsChecked = document.getElementById('cb-analytics') ? document.getElementById('cb-analytics').checked : false;
+    const marketingChecked = document.getElementById('cb-marketing') ? document.getElementById('cb-marketing').checked : false;
 
     try {
         fetch("/api/consent/capture", {
@@ -278,13 +334,15 @@ function handleOpenAccountSubmit(event) {
                 language: "en",
                 legal_basis: "CONSENT",
                 notice_version: "demo-secure-bank-v1",
-                purpose: "Personal Banking Account Opening",
+                purpose: "Personal Banking Account Opening (Unbundled)",
                 purpose_category: "STRICTLY_NECESSARY",
                 purpose_id: "P_ESSENTIALS",
+                analytics_consent: analyticsChecked,
+                marketing_consent: marketingChecked,
                 visitor_id: vid,
                 data_principal_id: vid
             })
-        }).then(r => r.json()).then(d => console.log("AutoCops Form Consent recorded:", d)).catch(e => console.error("AutoCops capture error:", e));
+        }).then(r => r.json()).then(d => console.log("AutoCops Unbundled Consent recorded:", d)).catch(e => console.error("AutoCops capture error:", e));
     } catch(e) {
         console.error("AutoCops capture exception:", e);
     }
