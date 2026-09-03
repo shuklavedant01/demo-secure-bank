@@ -145,7 +145,43 @@
                         <label class="block text-xs uppercase text-primary font-bold mb-2" for="contactMessage">Message</label>
                         <textarea class="w-full border border-slate-gray/20 rounded p-2.5 text-sm h-32" id="contactMessage" placeholder="How can we help you?" required></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors">
+                    
+                <!-- DPDP ACT 2023 UNBUNDLED CONSENT SECTION -->
+                <div class="border-t border-slate-gray/10 pt-6 mt-6 space-y-4">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-primary">
+                        DPDP Act 2023 Consent & Notice Declaration *
+                    </label>
+                    <p class="text-xs text-secondary leading-relaxed">
+                        Under Section 5 of the Digital Personal Data Protection (DPDP) Act 2023, Secure Bank requests your explicit, unbundled consent to process your personal data for the specified purposes below.
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-gray/20 hover:border-emerald-accent transition-colors cursor-pointer bg-surface-container-low">
+                            <input type="checkbox" id="cb-essential" onchange="toggleSubmitButton()" class="mt-0.5 w-4 h-4 text-emerald-accent accent-emerald-accent rounded cursor-pointer">
+                            <span class="text-xs text-primary font-medium">
+                                <strong>1. Essential Processing (Compulsory) *</strong><br>
+                                <span class="text-secondary font-normal">I consent to the collection and processing of my identity, contact, and financial details strictly required for account setup, service delivery, and regulatory compliance under DPDP Section 5(1).</span>
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-gray/20 hover:border-emerald-accent transition-colors cursor-pointer bg-surface-container-low">
+                            <input type="checkbox" id="cb-analytics" class="mt-0.5 w-4 h-4 text-emerald-accent accent-emerald-accent rounded cursor-pointer">
+                            <span class="text-xs text-primary font-medium">
+                                <strong>2. Analytical & Service Optimization (Optional)</strong><br>
+                                <span class="text-secondary font-normal">I consent to the processing of usage and diagnostic data to improve digital banking features (Purpose ID: PUR-20260714084638078113).</span>
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-gray/20 hover:border-emerald-accent transition-colors cursor-pointer bg-surface-container-low">
+                            <input type="checkbox" id="cb-marketing" class="mt-0.5 w-4 h-4 text-emerald-accent accent-emerald-accent rounded cursor-pointer">
+                            <span class="text-xs text-primary font-medium">
+                                <strong>3. Marketing & Offers Communication (Optional)</strong><br>
+                                <span class="text-secondary font-normal">I consent to receiving personalized banking offers, rate updates, and financial communications via Email/SMS (Purpose ID: PUR-20260714083036506173).</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+<button type="submit" id="contact-submit-btn" disabled class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md opacity-50 cursor-not-allowed transition-all" class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors">
                         Submit Message
                     </button>
                 </form>

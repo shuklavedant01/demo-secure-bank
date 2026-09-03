@@ -332,11 +332,11 @@ function toggleSubmitButton() {
         if (essentialCb.checked) {
             submitBtn.disabled = false;
             submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-            submitBtn.classList.add('hover:bg-emerald-accent/90', 'cursor-pointer');
+            submitBtn.classList.add('cursor-pointer');
         } else {
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            submitBtn.classList.remove('hover:bg-emerald-accent/90', 'cursor-pointer');
+            submitBtn.classList.remove('cursor-pointer');
         }
     }
 }
@@ -368,10 +368,8 @@ function sendAutoCopsConsent(purposeId, category, purposeTitle, email, fullName,
         })
         .then(r => r.json())
         .then(d => console.log("AutoCops Consent Captured [" + purposeId + "]:", d))
-        .catch(e => console.error("AutoCops capture error [" + purposeId + "]:", e));
-    } catch(e) {
-        console.error("AutoCops capture exception:", e);
-    }
+        .catch(e => console.error(e));
+    } catch(e) {}
 }
 
 function handleOpenAccountSubmit(event) {
@@ -384,17 +382,12 @@ function handleOpenAccountSubmit(event) {
     const analyticsChecked = document.getElementById('cb-analytics') ? document.getElementById('cb-analytics').checked : false;
     const marketingChecked = document.getElementById('cb-marketing') ? document.getElementById('cb-marketing').checked : false;
 
-    // 1. Essential Processing (Compulsory)
     sendAutoCopsConsent("P_ESSENTIALS", "STRICTLY_NECESSARY", "Personal Banking Essential Operations", email, fullName, mobile);
-
-    // 2. Analytics Processing (If selected)
     if (analyticsChecked) {
-        sendAutoCopsConsent("PUR-20260714084638078113", "ANALYTICS", "Analytical & Service Optimization Processing", email, fullName, mobile);
+        sendAutoCopsConsent("PUR-20260714084638078113", "ANALYTICS", "Analytical Processing", email, fullName, mobile);
     }
-
-    // 3. Marketing Processing (If selected)
     if (marketingChecked) {
-        sendAutoCopsConsent("PUR-20260714083036506173", "MARKETING", "Marketing & Offers Communication", email, fullName, mobile);
+        sendAutoCopsConsent("PUR-20260714083036506173", "MARKETING", "Marketing Offers", email, fullName, mobile);
     }
 
     const refNum = 'SB-ACC-' + Math.floor(100000 + Math.random() * 900000);
