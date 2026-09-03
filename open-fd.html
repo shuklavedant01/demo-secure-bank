@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fixed Deposit - Secure Bank</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-container": "#009668",
+                        "secondary": "#505f76",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1e",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "primary": "#000000",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#002113",
+                        "error-red": "#EF4444",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary": "#ffffff",
+                        "navy-deep": "#0F172A",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-ice": "#F1F5F9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "emerald-accent": "#10B981",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-fixed": "#0b1c30",
+                        "background": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-container": "#7c839b",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#565e74",
+                        "primary-fixed": "#dae2fd",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "slate-gray": "#64748B",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed-dim": "#bec6e0",
+                        "outline": "#76777d",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary-container": "#d0e1fb",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Noto Serif"],
+                        "headline-lg-mobile": ["Noto Serif"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Noto Serif"],
+                        "label-md": ["Inter"],
+                        "numeric-data": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "numeric-data": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom styles to enforce strict component rules */
+        .ghost-input {
+            @apply border border-slate-gray/10 bg-surface-container-lowest focus:border-navy-deep focus:ring-0 focus:border-2 transition-all outline-none px-4 py-3 rounded-DEFAULT font-body-lg text-body-lg text-on-surface w-full;
+        }
+        .bento-card {
+            @apply bg-surface-container-lowest border border-slate-gray/10 rounded-xl overflow-hidden relative;
+        }
+        .bento-card-tonal {
+            @apply bg-surface-ice border border-slate-gray/10 rounded-xl overflow-hidden relative;
+        }
+        /* Hide number input spinners for clean numeric data look */
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-lg text-body-lg text-on-surface antialiased min-h-screen flex flex-col">
+    <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 bg-[radial-gradient(circle_400px_at_var(--x,_0px)_var(--y,_0px),rgba(16,185,129,0.15),transparent_80%)]"></div>
+<!-- TopNavBar -->
+<!-- HEADER -->
+    <header class="bg-surface-container-lowest border-b border-slate-gray/10 w-full sticky top-0 z-50">
+        <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-title-md font-display-lg text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                    <span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">
+                        account_balance
+                    </span>
+                    Secure Bank
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-body-lg text-body-lg">
+                    <div class="relative group">
+                        <button class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1">
+                            <span>Personal</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="open-account.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Open Account</a>
+                                <a href="open-fd.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Fixed Deposit</a>
+                                <a href="apply-loan.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Apply for Loan</a>
+                                <a href="credit-card.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Credit Cards</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="business.html">Business</a>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="wealth.html">Wealth</a>
+                </nav>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a class="flex items-center gap-2 bg-emerald-accent text-on-primary px-6 py-2.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity" href="login.html">
+                    <span class="material-symbols-outlined text-[18px]">
+                        lock
+                    </span>
+                    Internet Banking
+                </a>
+            </div>
+        </div>
+    </header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24 space-y-16">
+<!-- Hero Section -->
+<section class="max-w-3xl space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-ice border border-slate-gray/10 rounded-full">
+<span class="material-symbols-outlined text-emerald-accent text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-md text-label-md text-navy-deep uppercase tracking-wider">Member FDIC Insured</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-navy-deep leading-tight">
+                Secure your future with guaranteed returns.
+            </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl text-lg">
+                Lock in exceptional rates with a Secure Bank Fixed Deposit. Experience the peace of mind that comes with minimal risk and precise, predictable growth for your capital.
+            </p>
+</section>
+<!-- Bento Grid Layout for Main Content -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Calculator Card (Spans 7 columns on desktop) -->
+<div class="md:col-span-7 bento-card p-8 md:p-12 flex flex-col justify-between min-h-[500px]">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-navy-deep mb-2">Calculate your yield</h2>
+<p class="font-body-sm text-body-sm text-secondary mb-8">Model your potential returns based on current interest rates.</p>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-slate-gray uppercase" for="deposit-amount">Deposit Amount (₹)</label>
+<input class="ghost-input font-numeric-data text-numeric-data text-navy-deep" id="deposit-amount" min="1000" step="1000" type="number" value="50000"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-slate-gray uppercase" for="deposit-term">Deposit Term</label>
+<div class="relative">
+<select class="ghost-input appearance-none pr-10 cursor-pointer" id="deposit-term">
+<option data-rate="4.50" value="6">6 Months (4.50% APY)</option>
+<option data-rate="5.00" selected="" value="12">12 Months (5.00% APY)</option>
+<option data-rate="5.25" value="24">24 Months (5.25% APY)</option>
+<option data-rate="5.50" value="36">36 Months (5.50% APY)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-gray pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-gray/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<p class="font-label-md text-label-md text-slate-gray uppercase mb-1">Projected Total Return</p>
+<p class="font-display-lg text-display-lg text-emerald-accent" id="projected-return">₹52,500.00</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-slate-gray uppercase mb-1">Interest Earned</p>
+<p class="font-numeric-data text-numeric-data text-navy-deep" id="interest-earned">+₹2,500.00</p>
+</div>
+</div>
+</div>
+<!-- Application Form Card (Spans 5 columns on desktop) -->
+<div class="md:col-span-5 bento-card-tonal p-8 flex flex-col">
+<div class="mb-8">
+<h2 class="font-title-md text-title-md text-navy-deep mb-2">Open an Account</h2>
+<p class="font-body-sm text-body-sm text-secondary">Start growing your wealth in under 3 minutes.</p>
+</div>
+<form action="#" class="space-y-5 flex-grow flex flex-col" method="POST">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-slate-gray uppercase" for="full-name">Legal Full Name</label>
+<input class="ghost-input" id="full-name" placeholder="e.g. Jane Doe" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-slate-gray uppercase" for="email">Email Address</label>
+<input class="ghost-input" id="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-slate-gray uppercase" for="ssn-last4">SSN (Last 4 Digits)</label>
+<div class="relative">
+<input class="ghost-input pl-10" id="ssn-last4" maxlength="4" placeholder="••••" required="" type="password"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-gray/50 text-[18px]">lock</span>
+</div>
+</div>
+<div class="pt-6 mt-auto">
+<button class="w-full bg-navy-deep text-on-secondary py-4 rounded-DEFAULT font-title-md text-title-md hover:bg-primary transition-colors flex justify-center items-center gap-2" type="submit">
+                            Proceed to Identity Verification
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="text-center font-body-sm text-body-sm text-slate-gray mt-4 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">encrypted</span>
+                            256-bit bank-grade encryption
+                        </p>
+</div>
+</form>
+</div>
+<!-- Features Row -->
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-gutter mt-8">
+<div class="flex items-start gap-4 p-6 border-l border-slate-gray/10">
+<div class="w-10 h-10 rounded-full bg-surface-ice flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-navy-deep mb-1">Capital Protection</h3>
+<p class="font-body-sm text-body-sm text-secondary">Your principal deposit is absolutely secure, shielded from market volatility.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 border-l border-slate-gray/10">
+<div class="w-10 h-10 rounded-full bg-surface-ice flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-navy-deep mb-1">Zero Monthly Fees</h3>
+<p class="font-body-sm text-body-sm text-secondary">Maintain your account without hidden maintenance or management costs.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 border-l border-slate-gray/10">
+<div class="w-10 h-10 rounded-full bg-surface-ice flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-navy-deep mb-1">Compound Growth</h3>
+<p class="font-body-sm text-body-sm text-secondary">Interest is compounded daily and credited monthly to maximize yield.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<!-- FOOTER -->
+    <footer class="bg-surface-container-low w-full border-t border-slate-gray/10 mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full gap-6">
+            <div class="text-title-md font-display-lg text-primary tracking-tight">Secure Bank</div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="index.html">Home</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-account.html">Open Account</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-fd.html">Fixed Deposit</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="apply-loan.html">Apply for Loan</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="credit-card.html">Credit Cards</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="security.html">Security</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="privacy.html">Privacy</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="careers.html">Careers</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="contact.html">Contact Info</a>
+            </div>
+            <div class="font-body-sm text-body-sm text-secondary text-center md:text-right">
+                © 2024 Secure Bank. Member FDIC. Equal Housing Lender.
+            </div>
+        </div>
+    </footer>
+<!-- Interactive Calculator Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const amountInput = document.getElementById('deposit-amount');
+            const termSelect = document.getElementById('deposit-term');
+            const totalDisplay = document.getElementById('projected-return');
+            const interestDisplay = document.getElementById('interest-earned');
+
+            function formatCurrency(value) {
+                return new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(value);
+            }
+
+            function calculate() {
+                const principal = parseFloat(amountInput.value) || 0;
+                const months = parseInt(termSelect.value, 10);
+                const selectedOption = termSelect.options[termSelect.selectedIndex];
+                const annualRate = parseFloat(selectedOption.getAttribute('data-rate')) / 100;
+
+                // Simple interest calculation for demonstration
+                // (Principal * Rate * Time in years)
+                const timeInYears = months / 12;
+                const interest = principal * annualRate * timeInYears;
+                const total = principal + interest;
+
+                totalDisplay.textContent = formatCurrency(total);
+                interestDisplay.textContent = '+' + formatCurrency(interest);
+            }
+
+            amountInput.addEventListener('input', calculate);
+            termSelect.addEventListener('change', calculate);
+            
+            // Initial calculation
+            calculate();
+        });
+    </script>
+
+
+<script>
+function handleFDSubmit() {
+    const amount = parseFloat(document.getElementById('deposit-amount').value) || 0;
+    const months = parseInt(document.getElementById('deposit-term').value, 10);
+    const refNum = 'SB-FD-' + Math.floor(100000 + Math.random() * 900000);
+    showSuccessModal(
+        "Fixed Deposit Confirmed", 
+        `Your Fixed Deposit of <strong>₹${amount.toLocaleString('en-IN', {minimumFractionDigits: 2})}</strong> for <strong>${months} months</strong> has been set up successfully.<br><br>Receipt Number: <strong>${refNum}</strong><br>A confirmation copy has been sent to your registered email address.`
+    );
+}
+</script>
+
+
+<!-- SUCCESS MODAL LOGIC -->
+<script>
+function showSuccessModal(title, message, redirectUrl = "index.html") {
+    // Remove existing modal if any
+    const existing = document.getElementById('custom-success-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'custom-success-modal';
+    modal.className = 'fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300';
+    modal.innerHTML = `
+        <div class="bg-white rounded-xl p-8 max-w-md w-full border border-slate-gray/10 shadow-2xl transform scale-95 transition-transform duration-300 space-y-6 text-center">
+            <div class="w-16 h-16 bg-emerald-accent/10 text-emerald-accent rounded-full flex items-center justify-center mx-auto">
+                <span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+            <div class="space-y-2">
+                <h3 class="font-display-lg text-2xl text-primary font-bold">${title}</h3>
+                <p class="text-secondary text-sm leading-relaxed">${message}</p>
+            </div>
+            <button id="modal-ok-btn" class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors font-semibold shadow-sm">
+                Return to Homepage
+            </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('modal-ok-btn').addEventListener('click', () => {
+        window.location.href = redirectUrl;
+    });
+}
+</script>
+
+<!-- CURSOR GLOW EFFECT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+        document.addEventListener('mousemove', (e) => {
+            glow.style.setProperty('--x', `${e.clientX}px`);
+            glow.style.setProperty('--y', `${e.clientY}px`);
+            glow.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+    }
+});
+</script>
+</body>
+</html>

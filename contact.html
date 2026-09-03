@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contact Us - Secure Bank</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; font-feature-settings: 'liga'; }
+        .ghost-border { border: 1px solid rgba(100, 116, 139, 0.1); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+    <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 bg-[radial-gradient(circle_400px_at_var(--x,_0px)_var(--y,_0px),rgba(16,185,129,0.15),transparent_80%)]"></div>
+
+    <!-- HEADER -->
+    <header class="bg-surface-container-lowest border-b border-slate-gray/10 w-full sticky top-0 z-50">
+        <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-title-md font-display-lg text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                    <span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">
+                        account_balance
+                    </span>
+                    Secure Bank
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-body-lg text-body-lg">
+                    <div class="relative group">
+                        <button class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1">
+                            <span>Personal</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="open-account.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Open Account</a>
+                                <a href="open-fd.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Fixed Deposit</a>
+                                <a href="apply-loan.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Apply for Loan</a>
+                                <a href="credit-card.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Credit Cards</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-secondary hover:text-primary transition-colors" href="business.html">Business</a>
+                    <a class="text-secondary hover:text-primary transition-colors" href="wealth.html">Wealth</a>
+                </nav>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a class="flex items-center gap-2 bg-emerald-accent text-on-primary px-6 py-2.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity" href="login.html">
+                    <span class="material-symbols-outlined text-[18px]">
+                        lock
+                    </span>
+                    Internet Banking
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+        
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-5 space-y-8">
+                <h1 class="font-display-lg text-4xl text-primary">Contact Us</h1>
+                <p class="text-secondary">Have inquiries about account registration, business solutions, or wealth advice? Our specialists are here to guide you.</p>
+                
+                <div class="space-y-6 text-sm text-secondary">
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-emerald-accent">call</span>
+                        <div>
+                            <p class="font-bold text-primary">Client Hotline</p>
+                            <p>1-800-SECURE-BANK</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-emerald-accent">mail</span>
+                        <div>
+                            <p class="font-bold text-primary">Email Inquiries</p>
+                            <p>support@securebank.com</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-emerald-accent">location_on</span>
+                        <div>
+                            <p class="font-bold text-primary">Corporate Headquarters</p>
+                            <p>12 Financial District, Suite 500<br/>Bengaluru, Karnataka 560001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 bg-white p-8 md:p-10 rounded-xl ghost-border shadow-sm">
+                <h3 class="font-bold text-primary text-lg mb-6">Send Us a Message</h3>
+                <form class="space-y-6" onsubmit="handleContactSubmit(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-primary font-bold mb-2" for="contactName">Name</label>
+                            <input class="w-full border border-slate-gray/20 rounded p-2.5 text-sm" id="contactName" placeholder="Your name" required type="text"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-primary font-bold mb-2" for="contactEmail">Email</label>
+                            <input class="w-full border border-slate-gray/20 rounded p-2.5 text-sm" id="contactEmail" placeholder="Your email" required type="email"/>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase text-primary font-bold mb-2" for="contactMessage">Message</label>
+                        <textarea class="w-full border border-slate-gray/20 rounded p-2.5 text-sm h-32" id="contactMessage" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors">
+                        Submit Message
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surface-container-low w-full border-t border-slate-gray/10 mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full gap-6">
+            <div class="text-title-md font-display-lg text-primary tracking-tight">Secure Bank</div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="index.html">Home</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-account.html">Open Account</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-fd.html">Fixed Deposit</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="apply-loan.html">Apply for Loan</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="credit-card.html">Credit Cards</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="security.html">Security</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="privacy.html">Privacy</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="careers.html">Careers</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="contact.html">Contact Info</a>
+            </div>
+            <div class="font-body-sm text-body-sm text-secondary text-center md:text-right">
+                © 2024 Secure Bank. Member FDIC. Equal Housing Lender.
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+<script>
+function handleContactSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('contactName').value;
+    showSuccessModal(
+        "Message Sent", 
+        `Thank you, <strong>${name}</strong>! Your query has been logged successfully.<br><br>One of our banking support professionals will contact you via email within the next 24 hours.`
+    );
+}
+</script>
+
+
+<!-- SUCCESS MODAL LOGIC -->
+<script>
+function showSuccessModal(title, message, redirectUrl = "index.html") {
+    // Remove existing modal if any
+    const existing = document.getElementById('custom-success-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'custom-success-modal';
+    modal.className = 'fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300';
+    modal.innerHTML = `
+        <div class="bg-white rounded-xl p-8 max-w-md w-full border border-slate-gray/10 shadow-2xl transform scale-95 transition-transform duration-300 space-y-6 text-center">
+            <div class="w-16 h-16 bg-emerald-accent/10 text-emerald-accent rounded-full flex items-center justify-center mx-auto">
+                <span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+            <div class="space-y-2">
+                <h3 class="font-display-lg text-2xl text-primary font-bold">${title}</h3>
+                <p class="text-secondary text-sm leading-relaxed">${message}</p>
+            </div>
+            <button id="modal-ok-btn" class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors font-semibold shadow-sm">
+                Return to Homepage
+            </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('modal-ok-btn').addEventListener('click', () => {
+        window.location.href = redirectUrl;
+    });
+}
+</script>
+
+<!-- CURSOR GLOW EFFECT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+        document.addEventListener('mousemove', (e) => {
+            glow.style.setProperty('--x', `${e.clientX}px`);
+            glow.style.setProperty('--y', `${e.clientY}px`);
+            glow.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+    }
+});
+</script>
+</body>
+</html>

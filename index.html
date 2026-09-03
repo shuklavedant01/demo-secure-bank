@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secure Bank - Minimalist Finance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Serif:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-container": "#009668",
+                        "secondary": "#505f76",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1e",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "primary": "#000000",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#002113",
+                        "error-red": "#EF4444",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary": "#ffffff",
+                        "navy-deep": "#0F172A",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-ice": "#F1F5F9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "emerald-accent": "#10B981",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-fixed": "#0b1c30",
+                        "background": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-container": "#7c839b",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#565e74",
+                        "primary-fixed": "#dae2fd",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "slate-gray": "#64748B",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed-dim": "#bec6e0",
+                        "outline": "#76777d",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary-container": "#d0e1fb",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Noto Serif"],
+                        "headline-lg-mobile": ["Noto Serif"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Noto Serif"],
+                        "label-md": ["Inter"],
+                        "numeric-data": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "numeric-data": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; font-feature-settings: 'liga'; }
+        
+        .hero-pattern { background-image: radial-gradient(#e0e3e5 1px, transparent 1px); background-size: 24px 24px; }
+        .ghost-border { border: 1px solid rgba(100, 116, 139, 0.1); }
+        .focus-ring:focus-within { border-color: #0F172A; border-width: 2px; outline: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+    <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 bg-[radial-gradient(circle_400px_at_var(--x,_0px)_var(--y,_0px),rgba(16,185,129,0.15),transparent_80%)]"></div>
+<!-- TopNavBar -->
+<!-- HEADER -->
+    <header class="bg-surface-container-lowest border-b border-slate-gray/10 w-full sticky top-0 z-50">
+        <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-title-md font-display-lg text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                    <span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">
+                        account_balance
+                    </span>
+                    Secure Bank
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-body-lg text-body-lg">
+                    <div class="relative group">
+                        <button class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1">
+                            <span>Personal</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="open-account.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Open Account</a>
+                                <a href="open-fd.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Fixed Deposit</a>
+                                <a href="apply-loan.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Apply for Loan</a>
+                                <a href="credit-card.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Credit Cards</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="business.html">Business</a>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="wealth.html">Wealth</a>
+                </nav>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a class="flex items-center gap-2 bg-emerald-accent text-on-primary px-6 py-2.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity" href="login.html">
+                    <span class="material-symbols-outlined text-[18px]">
+                        lock
+                    </span>
+                    Internet Banking
+                </a>
+            </div>
+        </div>
+    </header>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative bg-surface-container-lowest pt-20 pb-32 overflow-hidden">
+<div class="hero-pattern absolute inset-0 opacity-50"></div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-6 space-y-8">
+<div class="inline-flex items-center gap-2 bg-surface-ice px-4 py-2 rounded-full ghost-border">
+<span class="material-symbols-outlined text-navy-deep text-sm" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-md text-label-md text-navy-deep uppercase tracking-wider">Uncompromised Security</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary max-w-lg leading-tight">
+                        Minimalist Finance.<br/>Maximum Trust.
+                    </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-md">
+                        Experience banking refined to its essential elements. We protect your wealth with institutional-grade security while offering an effortlessly intuitive digital experience.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<a href="open-account.html" class="inline-block text-center bg-emerald-accent text-on-primary px-8 py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors shadow-sm">
+                            Open an Account
+                        </a>
+<a href="open-fd.html" class="inline-block text-center border border-navy-deep text-navy-deep px-8 py-3 rounded font-title-md text-title-md hover:bg-surface-ice transition-colors">
+                            Explore Services
+                        </a>
+</div>
+</div>
+<div class="md:col-span-6 relative mt-12 md:mt-0">
+<div class="aspect-square md:aspect-[4/3] rounded-xl overflow-hidden ghost-border bg-surface-ice relative group">
+<img alt="Modern banking environment" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A high-end, minimalist architectural photograph of a modern bank interior. Sunlight streams through large floor-to-ceiling windows, casting sharp geometric shadows on polished concrete floors. The aesthetic is clean, professional, and secure, utilizing a palette of stark whites, deep navy blacks, and subtle cool grays. A sense of calm reliability and institutional trust pervades the bright, light-mode scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMDevs0UjuZgu2eGKJdxT7P8lfSPzRRJVxzimOEeURBxyjZ77fjX7spBl_Hae36yvhd7XUBN68ZqXWmiQUCVALTnmQStjDT5lVGGCKg-hVTOkKwJqGSJSQ-0Yg0v94aCP3UBKopyhWLbnrnC_GqhKu21X5AGdyBJxrsfFaAWkUncCromC4uIjvhb2nTkVu6mwOW-TXscLTk5M3qJKc650Pzl_LeTsODN8FS-qrMIFnuS-IcKmD5dLWxA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<!-- Floating Stat Card -->
+<div class="absolute -bottom-8 -left-8 md:-left-16 bg-surface-container-lowest p-6 rounded-lg ghost-border shadow-[0_10px_30px_-15px_rgba(15,23,42,0.1)] hidden md:block">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-ice flex items-center justify-center text-emerald-accent">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-widest">Assets Protected</p>
+<p class="font-numeric-data text-numeric-data text-primary mt-1">₹45B+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+        <!-- PRODUCTS SECTION -->
+        <section class="py-20 bg-surface-container-low border-b border-slate-gray/10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="text-center max-w-xl mx-auto mb-16 space-y-4">
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Simple Products. Exceptional Value.</h2>
+                    <p class="font-body-lg text-body-lg text-secondary">Discover banking services constructed around your personal financial goals.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                    <!-- Product 1: Savings -->
+                    <div class="bg-surface-container-lowest p-8 rounded-xl ghost-border flex flex-col justify-between h-[320px] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface-ice flex items-center justify-center text-emerald-accent">
+                                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+                            </div>
+                            <h3 class="font-title-md text-title-md text-primary font-bold">Savings Account</h3>
+                            <p class="text-secondary text-sm">Earn up to 4.50% interest p.a. with zero monthly fees or minimum balance requirements.</p>
+                        </div>
+                        <a href="open-account.html" class="text-emerald-accent text-sm font-semibold hover:underline flex items-center gap-1">
+                            Open Account <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Product 2: Fixed Deposit -->
+                    <div class="bg-surface-container-lowest p-8 rounded-xl ghost-border flex flex-col justify-between h-[320px] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface-ice flex items-center justify-center text-emerald-accent">
+                                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                            </div>
+                            <h3 class="font-title-md text-title-md text-primary font-bold">Fixed Deposit</h3>
+                            <p class="text-secondary text-sm">Grow your capital securely with competitive rates up to 7.50% p.a. and flexible terms.</p>
+                        </div>
+                        <a href="open-fd.html" class="text-emerald-accent text-sm font-semibold hover:underline flex items-center gap-1">
+                            Configure FD <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <!-- Product 3: Personal Loans -->
+                    <div class="bg-surface-container-lowest p-8 rounded-xl ghost-border flex flex-col justify-between h-[320px] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface-ice flex items-center justify-center text-emerald-accent">
+                                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">home</span>
+                            </div>
+                            <h3 class="font-title-md text-title-md text-primary font-bold">Personal Loans</h3>
+                            <p class="text-secondary text-sm">Fulfill your life goals with competitive financing starting at 8.40% interest p.a.</p>
+                        </div>
+                        <a href="apply-loan.html" class="text-emerald-accent text-sm font-semibold hover:underline flex items-center gap-1">
+                            Apply for Loan <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <!-- Product 4: Credit Cards -->
+                    <div class="bg-surface-container-lowest p-8 rounded-xl ghost-border flex flex-col justify-between h-[320px] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-lg bg-surface-ice flex items-center justify-center text-emerald-accent">
+                                <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+                            </div>
+                            <h3 class="font-title-md text-title-md text-primary font-bold">Credit Cards</h3>
+                            <p class="text-secondary text-sm">Get up to 5% cashback on daily dining, travel, and shopping with annual fee waivers.</p>
+                        </div>
+                        <a href="credit-card.html" class="text-emerald-accent text-sm font-semibold hover:underline flex items-center gap-1">
+                            Apply for Card <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RATES SECTION -->
+        <section class="py-20 bg-surface-container-lowest border-b border-slate-gray/10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 space-y-6">
+                        <h2 class="font-headline-lg text-headline-lg text-primary">Current Rates at a Glance</h2>
+                        <p class="font-body-lg text-body-lg text-secondary">We offer some of the most competitive yields and lending rates in the industry. Watch your wealth expand or finance your projects cleanly.</p>
+                        <div class="pt-4">
+                            <a href="open-account.html" class="bg-navy-deep text-white px-8 py-3.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity inline-block">
+                                Start Banking With Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 bg-surface-container-low rounded-xl p-8 ghost-border">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-3 border-b border-slate-gray/10">
+                                <span class="font-body-lg text-primary font-medium">Savings Account Yield</span>
+                                <span class="font-numeric-data text-numeric-data text-emerald-accent font-bold">Up to 4.50% p.a.</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-slate-gray/10">
+                                <span class="font-body-lg text-primary font-medium">1-Year Fixed Deposit</span>
+                                <span class="font-numeric-data text-numeric-data text-emerald-accent font-bold">7.00% p.a.</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-slate-gray/10">
+                                <span class="font-body-lg text-primary font-medium">3-Year Fixed Deposit</span>
+                                <span class="font-numeric-data text-numeric-data text-emerald-accent font-bold">7.50% p.a.</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-slate-gray/10">
+                                <span class="font-body-lg text-primary font-medium">Home Loan Rate</span>
+                                <span class="font-numeric-data text-numeric-data text-primary font-bold">Starts at 8.40% p.a.</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3">
+                                <span class="font-body-lg text-primary font-medium">Personal Loan Rate</span>
+                                <span class="font-numeric-data text-numeric-data text-primary font-bold">Starts at 9.20% p.a.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY US SECTION -->
+        <section class="py-20 bg-surface-container-low border-b border-slate-gray/10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="text-center max-w-xl mx-auto mb-16 space-y-4">
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Why Bank With Us?</h2>
+                    <p class="font-body-lg text-body-lg text-secondary">A synthesis of traditional institutional safety and modern digital efficiency.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="space-y-4 text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-surface-ice flex items-center justify-center text-navy-deep mx-auto md:mx-0">
+                            <span class="material-symbols-outlined text-[24px]">verified_user</span>
+                        </div>
+                        <h3 class="text-title-md font-bold text-primary">Guaranteed Safety</h3>
+                        <p class="text-secondary text-sm">Your deposits are protected with FDIC-equivalent guarantees up to ₹250,000. Over ₹45 Billion in protected assets trust us daily.</p>
+                    </div>
+                    
+                    <div class="space-y-4 text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-surface-ice flex items-center justify-center text-navy-deep mx-auto md:mx-0">
+                            <span class="material-symbols-outlined text-[24px]">speed</span>
+                        </div>
+                        <h3 class="text-title-md font-bold text-primary">Instant Access</h3>
+                        <p class="text-secondary text-sm">Check accounts, configure Fixed Deposits, lock/unlock cards, and send money instantly via our zero-friction digital portal.</p>
+                    </div>
+
+                    <div class="space-y-4 text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-surface-ice flex items-center justify-center text-navy-deep mx-auto md:mx-0">
+                            <span class="material-symbols-outlined text-[24px]">percent</span>
+                        </div>
+                        <h3 class="text-title-md font-bold text-primary">Zero Hidden Fees</h3>
+                        <p class="text-secondary text-sm">We believe in transparent, minimalist finance. Absolutely zero hidden account fees, balance upkeeps, or transfer charges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MOBILE APP BANNER -->
+        <section class="py-20 bg-navy-deep text-white border-b border-slate-gray/10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="space-y-6 max-w-xl">
+                    <h2 class="font-display-lg text-4xl text-white">Banking in Your Pocket</h2>
+                    <p class="text-slate-300 text-body-lg">Download the Secure Bank mobile app to track your savings, configure live investments, transfer funds, and freeze cards instantly with robust 2FA security.</p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#" class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-lg flex items-center gap-3 transition-colors border border-white/10">
+                            <span class="material-symbols-outlined text-white text-[28px]">phone_iphone</span>
+                            <div class="text-left">
+                                <p class="text-[10px] text-slate-300 uppercase tracking-widest leading-none">Download on the</p>
+                                <p class="text-sm font-bold leading-none mt-1">App Store</p>
+                            </div>
+                        </a>
+                        <a href="#" class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-lg flex items-center gap-3 transition-colors border border-white/10">
+                            <span class="material-symbols-outlined text-white text-[28px]">phone_android</span>
+                            <div class="text-left">
+                                <p class="text-[10px] text-slate-300 uppercase tracking-widest leading-none">Get it on</p>
+                                <p class="text-sm font-bold leading-none mt-1">Google Play</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-64 h-[450px] bg-slate-800 rounded-3xl border-8 border-slate-700 flex flex-col justify-between p-6 shadow-2xl shrink-0 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-accent/20 to-transparent"></div>
+                    <div class="flex justify-between items-center relative z-10">
+                        <span class="text-xs font-bold text-slate-300">Secure Bank</span>
+                        <span class="material-symbols-outlined text-emerald-accent text-sm" style="font-variation-settings: 'FILL' 1;">shield</span>
+                    </div>
+                    <div class="space-y-4 relative z-10 my-auto">
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider">Total Balance</p>
+                        <p class="text-3xl font-bold font-numeric-data">₹1,45,280.50</p>
+                        <div class="p-4 bg-slate-900/60 rounded-xl border border-white/5 space-y-2">
+                            <p class="text-[9px] text-slate-400 uppercase tracking-wider">Fixed Deposit Yield</p>
+                            <p class="text-sm font-bold text-emerald-accent font-numeric-data">+₹3,500.00 (7.5%)</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center relative z-10 pt-4 border-t border-slate-700/60">
+                        <span class="material-symbols-outlined text-emerald-accent">dashboard</span>
+                        <span class="material-symbols-outlined text-slate-400">payments</span>
+                        <span class="material-symbols-outlined text-slate-400">credit_card</span>
+                        <span class="material-symbols-outlined text-slate-400">settings</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQS SECTION -->
+        <section class="py-20 bg-surface-container-low">
+            <div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop space-y-12">
+                <div class="text-center space-y-4">
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Frequently Asked Questions</h2>
+                    <p class="font-body-lg text-body-lg text-secondary">Got questions about Secure Bank? We have compiled responses to common inquiries.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-surface-container-lowest rounded-xl ghost-border p-6 space-y-3">
+                        <h4 class="font-bold text-primary text-base flex justify-between items-center">
+                            <span>How secure is my money with Secure Bank?</span>
+                        </h4>
+                        <p class="text-secondary text-sm leading-relaxed">Your money is protected under FDIC-equivalent deposit insurance guidelines up to ₹250,000 per depositor. Furthermore, we run continuous fraud monitoring, secure 256-bit encryption pipelines, and strict multi-factor authentication locks.</p>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-surface-container-lowest rounded-xl ghost-border p-6 space-y-3">
+                        <h4 class="font-bold text-primary text-base flex justify-between items-center">
+                            <span>Are there any hidden fees or charges?</span>
+                        </h4>
+                        <p class="text-secondary text-sm leading-relaxed">No. We value absolute simplicity. There are zero charges for account opening, zero monthly subscription fees, and no minimum balance upkeep fees whatsoever.</p>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-surface-container-lowest rounded-xl ghost-border p-6 space-y-3">
+                        <h4 class="font-bold text-primary text-base flex justify-between items-center">
+                            <span>How long does it take to open an account?</span>
+                        </h4>
+                        <p class="text-secondary text-sm leading-relaxed">Our digital onboarding takes less than 2 minutes. Fill out your legal identity details, submit your PAN card number, and your account will be activated immediately.</p>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="bg-surface-container-lowest rounded-xl ghost-border p-6 space-y-3">
+                        <h4 class="font-bold text-primary text-base flex justify-between items-center">
+                            <span>Can I manage my credit card and FD online?</span>
+                        </h4>
+                        <p class="text-secondary text-sm leading-relaxed">Yes. Our integrated internet banking portal lets you set up Fixed Deposits, apply for new loans, lock/unlock cards, set spending limits, and track rewards instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+</main>
+<!-- Footer -->
+<!-- FOOTER -->
+    <footer class="bg-surface-container-low w-full border-t border-slate-gray/10 mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full gap-6">
+            <div class="text-title-md font-display-lg text-primary tracking-tight">Secure Bank</div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="index.html">Home</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-account.html">Open Account</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="open-fd.html">Fixed Deposit</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="apply-loan.html">Apply for Loan</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="credit-card.html">Credit Cards</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="security.html">Security</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="privacy.html">Privacy</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="careers.html">Careers</a>
+                <a class="font-body-sm text-body-sm text-secondary hover:text-emerald-accent transition-colors focus:underline" href="contact.html">Contact Info</a>
+            </div>
+            <div class="font-body-sm text-body-sm text-secondary text-center md:text-right">
+                © 2024 Secure Bank. Member FDIC. Equal Housing Lender.
+            </div>
+        </div>
+    </footer>
+
+<!-- CURSOR GLOW EFFECT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+        document.addEventListener('mousemove', (e) => {
+            glow.style.setProperty('--x', `${e.clientX}px`);
+            glow.style.setProperty('--y', `${e.clientY}px`);
+            glow.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+    }
+});
+</script>
+</body>
+</html>

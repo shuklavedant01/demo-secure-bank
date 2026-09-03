@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Open a Bank Account - Secure Bank</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "error": "#ba1a1a",
+                    "on-surface": "#191c1e",
+                    "on-tertiary-container": "#009668",
+                    "secondary": "#505f76",
+                    "surface-container-high": "#e6e8ea",
+                    "error-container": "#ffdad6",
+                    "on-background": "#191c1e",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "primary": "#000000",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#002113",
+                    "error-red": "#EF4444",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-tertiary": "#ffffff",
+                    "navy-deep": "#0F172A",
+                    "on-secondary-container": "#54647a",
+                    "surface-container-low": "#f2f4f6",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-ice": "#F1F5F9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "emerald-accent": "#10B981",
+                    "tertiary-fixed": "#6ffbbe",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary-fixed": "#0b1c30",
+                    "background": "#f7f9fb",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c6c6cd",
+                    "on-primary-container": "#7c839b",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-tint": "#565e74",
+                    "primary-fixed": "#dae2fd",
+                    "surface-dim": "#d8dadc",
+                    "surface-bright": "#f7f9fb",
+                    "slate-gray": "#64748B",
+                    "on-primary-fixed": "#131b2e",
+                    "primary-fixed-dim": "#bec6e0",
+                    "outline": "#76777d",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-container": "#d0e1fb",
+                    "on-surface-variant": "#45464d",
+                    "secondary-fixed": "#d3e4fe",
+                    "primary-container": "#131b2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Noto Serif"],
+                    "headline-lg-mobile": ["Noto Serif"],
+                    "title-md": ["Inter"],
+                    "display-lg": ["Noto Serif"],
+                    "label-md": ["Inter"],
+                    "numeric-data": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "numeric-data": ["20px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb; /* background */
+            color: #191c1e; /* on-background */
+        }
+        .ghost-border {
+            border: 1px solid rgba(100, 116, 139, 0.1); /* slate-gray/10 */
+        }
+        .input-field {
+            background-color: #ffffff;
+            border: 1px solid rgba(100, 116, 139, 0.1);
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            outline: none;
+            border: 2px solid #0F172A; /* navy-deep */
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg antialiased min-h-screen flex flex-col">
+    <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 bg-[radial-gradient(circle_400px_at_var(--x,_0px)_var(--y,_0px),rgba(16,185,129,0.15),transparent_80%)]"></div>
+<!-- TopNavBar Suppressed: Linear/Transactional Flow -->
+<!-- HEADER -->
+    <header class="bg-surface-container-lowest border-b border-slate-gray/10 w-full sticky top-0 z-50">
+        <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-title-md font-display-lg text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                    <span class="material-symbols-outlined text-navy-deep" style="font-variation-settings: 'FILL' 1;">
+                        account_balance
+                    </span>
+                    Secure Bank
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-body-lg text-body-lg">
+                    <div class="relative group">
+                        <button class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1">
+                            <span>Personal</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-slate-gray/10 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="open-account.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Open Account</a>
+                                <a href="open-fd.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Fixed Deposit</a>
+                                <a href="apply-loan.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Apply for Loan</a>
+                                <a href="credit-card.html" class="block px-4 py-2 text-sm text-secondary hover:text-primary hover:bg-surface-ice transition-colors">Credit Cards</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="business.html">Business</a>
+                    <a class="text-secondary hover:text-primary transition-colors font-body-lg text-body-lg" href="wealth.html">Wealth</a>
+                </nav>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a class="flex items-center gap-2 bg-emerald-accent text-on-primary px-6 py-2.5 rounded font-title-md text-title-md hover:opacity-90 transition-opacity" href="login.html">
+                    <span class="material-symbols-outlined text-[18px]">
+                        lock
+                    </span>
+                    Internet Banking
+                </a>
+            </div>
+        </div>
+    </header>
+<main class="flex-grow flex items-center justify-center py-12 md:py-24 px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-2xl">
+<!-- Header Section -->
+<div class="text-center mb-12">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Open Your Account</h2>
+<p class="font-body-lg text-body-lg text-secondary">Simple, secure, and completed in under 2 minutes.</p>
+</div>
+
+<!-- Form Container -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 ghost-border shadow-[0_0_30px_rgba(15,23,42,0.04)]">
+<div class="flex items-center mb-8 pb-4 border-b border-slate-gray/10">
+<span class="material-symbols-outlined text-navy-deep mr-3" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Secure 256-bit Encryption</span>
+</div>
+<form id="open-account-form" onsubmit="handleOpenAccountSubmit(event)">
+    <div class="mb-6">
+        <label class="block font-label-md text-label-md text-primary mb-1 uppercase tracking-widest font-semibold" for="fullName">Full Name *</label>
+        <p class="text-xs text-secondary mb-2">As per PAN card</p>
+        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="fullName" placeholder="Enter your full name" required type="text"/>
+    </div>
+    
+    <div class="mb-6">
+        <label class="block font-label-md text-label-md text-primary mb-1 uppercase tracking-widest font-semibold" for="dob">Date of Birth *</label>
+        <p class="text-xs text-secondary mb-2">dd-mm-yyyy</p>
+        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="dob" placeholder="dd-mm-yyyy" required type="text" pattern="\d{2}-\d{2}-\d{4}" title="Please enter DOB in dd-mm-yyyy format"/>
+    </div>
+
+    <div class="mb-6">
+        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="email">Email *</label>
+        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="email" placeholder="Enter your email" required type="email"/>
+    </div>
+
+    <div class="mb-6">
+        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="mobile">Mobile Number *</label>
+        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="mobile" placeholder="Enter your 10-digit mobile number" required type="tel" pattern="[6789]\d{9}" title="Please enter a valid 10-digit Indian mobile number"/>
+    </div>
+
+    <div class="mb-6">
+        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="pan">PAN Number *</label>
+        <input class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="pan" placeholder="Enter your 10-character PAN number" required type="text" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" title="Please enter a valid 10-character PAN number (e.g. ABCDE1234F)" style="text-transform: uppercase;"/>
+    </div>
+
+    <div class="mb-6">
+        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="accountType">Account Type *</label>
+        <select class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep" id="accountType" required>
+            <option value="" disabled selected>Select account type</option>
+            <option value="Savings">Savings Account</option>
+            <option value="Checking">Checking Account</option>
+            <option value="Fixed Deposit">Fixed Deposit Account</option>
+        </select>
+    </div>
+
+    <div class="mb-8">
+        <label class="block font-label-md text-label-md text-primary mb-2 uppercase tracking-widest font-semibold" for="address">Residential Address</label>
+        <textarea class="w-full border border-slate-gray/20 rounded p-3 font-body-lg text-primary focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep h-24" id="address" placeholder="Enter your current residential address"></textarea>
+    </div>
+
+    <div class="flex justify-end mt-12">
+        <button class="w-full bg-emerald-accent text-on-primary font-title-md text-title-md py-4 rounded hover:bg-emerald-accent/90 transition-colors shadow-sm text-center font-semibold" type="submit">
+            Apply
+        </button>
+    </div>
+</form>
+</div>
+<div class="mt-8 text-center">
+<p class="font-body-sm text-body-sm text-secondary">Already have an account? <a class="text-emerald-accent hover:underline" href="index.html">Log in here</a>.</p>
+</div>
+</div>
+</main>
+<!-- Footer Suppressed on transactional flow to maintain focus -->
+
+
+<script>
+function handleOpenAccountSubmit(event) {
+    event.preventDefault();
+    const fullName = document.getElementById('fullName').value;
+    const accType = document.getElementById('accountType').value;
+    const refNum = 'SB-ACC-' + Math.floor(100000 + Math.random() * 900000);
+    showSuccessModal(
+        "Application Submitted", 
+        `Thank you, <strong>${fullName}</strong>! Your application for a new <strong>${accType} Account</strong> has been received successfully.<br><br>Reference Number: <strong>${refNum}</strong><br>Our onboarding team will contact you within 24 hours.`
+    );
+}
+</script>
+
+
+<!-- SUCCESS MODAL LOGIC -->
+<script>
+function showSuccessModal(title, message, redirectUrl = "index.html") {
+    // Remove existing modal if any
+    const existing = document.getElementById('custom-success-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'custom-success-modal';
+    modal.className = 'fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300';
+    modal.innerHTML = `
+        <div class="bg-white rounded-xl p-8 max-w-md w-full border border-slate-gray/10 shadow-2xl transform scale-95 transition-transform duration-300 space-y-6 text-center">
+            <div class="w-16 h-16 bg-emerald-accent/10 text-emerald-accent rounded-full flex items-center justify-center mx-auto">
+                <span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+            <div class="space-y-2">
+                <h3 class="font-display-lg text-2xl text-primary font-bold">${title}</h3>
+                <p class="text-secondary text-sm leading-relaxed">${message}</p>
+            </div>
+            <button id="modal-ok-btn" class="w-full bg-emerald-accent text-on-primary py-3 rounded font-title-md text-title-md hover:bg-emerald-accent/90 transition-colors font-semibold shadow-sm">
+                Return to Homepage
+            </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('modal-ok-btn').addEventListener('click', () => {
+        window.location.href = redirectUrl;
+    });
+}
+</script>
+
+<!-- CURSOR GLOW EFFECT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+        document.addEventListener('mousemove', (e) => {
+            glow.style.setProperty('--x', `${e.clientX}px`);
+            glow.style.setProperty('--y', `${e.clientY}px`);
+            glow.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+    }
+});
+</script>
+</body>
+</html>
